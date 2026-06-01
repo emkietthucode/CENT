@@ -10717,6 +10717,25 @@
     },
     "updated_at": "2026-05-25T08:53:01.291Z"
   },
+  "60572": {
+    "title": "A Sun (2019)",
+    "year": 1997,
+    "media_type": "tv",
+    "response": {
+      "Response": "True",
+      "Title": "A Sun (2019)",
+      "Year": "1997",
+      "imdbID": "tt10883506",
+      "imdbRating": "7.6",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.6/10"
+        }
+      ]
+    },
+    "updated_at": "2026-06-01T06:50:07.937Z"
+  },
   "60625": {
     "title": "Rick and Morty",
     "year": 2013,
@@ -10751,6 +10770,41 @@
       "Response": "True"
     },
     "updated_at": "2026-05-25T08:49:12.937Z"
+  },
+  "60705": {
+    "title": "Faking It",
+    "year": 2014,
+    "media_type": "tv",
+    "response": {
+      "Title": "Faking It",
+      "Year": "2014–2016",
+      "Rated": "TV-14",
+      "Released": "22 Apr 2014",
+      "Runtime": "1 min",
+      "Genre": "Comedy, Drama, Romance",
+      "Director": "N/A",
+      "Writer": "Carter Covington, Dana Goodman, Julia Lea Wolov",
+      "Actors": "Rita Volk, Katie Stevens, Gregg Sulkin",
+      "Plot": "After numerous attempts of trying to be popular two best friends decide to come out as lesbians, which launches them to instant celebrity status. Seduced by their newfound fame, Karma and Amy decide to keep up their romantic ruse.",
+      "Language": "English",
+      "Country": "United States",
+      "Awards": "1 win & 7 nominations total",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BNWIyNTI5ZjYtN2VmMC00YmEwLTkwZWEtNDZiZmQwM2QwODM0XkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.3/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "7.3",
+      "imdbVotes": "15,432",
+      "imdbID": "tt3127020",
+      "Type": "series",
+      "totalSeasons": "3",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:41.726Z"
   },
   "61818": {
     "title": "Late Night with Seth Meyers",
@@ -11577,6 +11631,41 @@
     },
     "updated_at": "2026-05-25T07:19:05.802Z"
   },
+  "77337": {
+    "title": "Sing It!",
+    "year": 2016,
+    "media_type": "tv",
+    "response": {
+      "Title": "Sing It!",
+      "Year": "2016",
+      "Rated": "TV-14",
+      "Released": "25 May 2016",
+      "Runtime": "23 min",
+      "Genre": "Comedy, Music",
+      "Director": "N/A",
+      "Writer": "Benny Fine, Rafi Fine",
+      "Actors": "Mircea Monroe, Mark Jude Sullivan, Preston Jones",
+      "Plot": "Scripted comedy that lovingly satirizes the reality singing competitions that have become a centerpiece of pop culture. When SING IT's executive producer is fired, Stacy Needles' plan to take charge is thwarted with the arrival of...",
+      "Language": "English",
+      "Country": "United States",
+      "Awards": "1 nomination",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BYjcyYTkwYWUtM2UyNi00ZDNmLTg4NjctMjNjMzQ0YWYzZDc2XkEyXkFqcGdeQXVyNzQ5NjM3Mw@@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "4.2/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "4.2",
+      "imdbVotes": "143",
+      "imdbID": "tt5622630",
+      "Type": "series",
+      "totalSeasons": "1",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:41.356Z"
+  },
   "77338": {
     "title": "The Intouchables",
     "year": 2011,
@@ -11657,6 +11746,41 @@
       "Response": "True"
     },
     "updated_at": "2026-05-25T07:19:06.973Z"
+  },
+  "77791": {
+    "title": "Nailed It!",
+    "year": 2018,
+    "media_type": "tv",
+    "response": {
+      "Title": "Nailed It!",
+      "Year": "2018–",
+      "Rated": "TV-PG",
+      "Released": "09 Mar 2018",
+      "Runtime": "33 min",
+      "Genre": "Game-Show, Reality-TV",
+      "Director": "N/A",
+      "Writer": "N/A",
+      "Actors": "Nicole Byer, Jacques Torres, Weston Bahr",
+      "Plot": "Home bakers with a terrible track record take a crack at re- creating edible masterpieces for a $10,000 prize. It's part reality contest, part hot mess.",
+      "Language": "English",
+      "Country": "United States",
+      "Awards": "Nominated for 8 Primetime Emmys. 1 win & 39 nominations total",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMzA1NDA4MTQtZGUwMC00YzBlLTg1YmQtOWNhYmI1OWFmYzk1XkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.4/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "7.4",
+      "imdbVotes": "5,561",
+      "imdbID": "tt6987788",
+      "Type": "series",
+      "totalSeasons": "7",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:40.944Z"
   },
   "78192": {
     "title": "Michael Jackson: The Life of an Icon",
@@ -12148,6 +12272,41 @@
     },
     "updated_at": "2026-05-25T08:49:19.627Z"
   },
+  "85167": {
+    "title": "I\"s",
+    "year": 2018,
+    "media_type": "tv",
+    "response": {
+      "Title": "Who Is America?",
+      "Year": "2018",
+      "Rated": "TV-MA",
+      "Released": "15 Jul 2018",
+      "Runtime": "30S min",
+      "Genre": "Comedy",
+      "Director": "N/A",
+      "Writer": "Sacha Baron Cohen",
+      "Actors": "Sacha Baron Cohen, Roy Elghanayan, Emanuela Postacchini",
+      "Plot": "Sacha Baron Cohen offers his take on America's patriotism.",
+      "Language": "English",
+      "Country": "United States, United Kingdom",
+      "Awards": "Nominated for 3 Primetime Emmys. 8 nominations total",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BZTg3ZDRkZWItYzA1Yy00MjdlLTk3MGItMTJkZjM5Y2VjZmM4XkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "8.3/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "8.3",
+      "imdbVotes": "21,123",
+      "imdbID": "tt8679236",
+      "Type": "series",
+      "totalSeasons": "1",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:34.429Z"
+  },
   "85552": {
     "title": "Euphoria",
     "year": 2019,
@@ -12326,6 +12485,41 @@
     },
     "updated_at": "2026-05-25T08:53:01.218Z"
   },
+  "87185": {
+    "title": "Kill It",
+    "year": 2019,
+    "media_type": "tv",
+    "response": {
+      "Title": "Kill It",
+      "Year": "2019",
+      "Rated": "N/A",
+      "Released": "23 Mar 2019",
+      "Runtime": "60 min",
+      "Genre": "Drama, Mystery, Thriller",
+      "Director": "N/A",
+      "Writer": "N/A",
+      "Actors": "Jang Ki-yong, Im Jin-ah, Roh Jeong-eui",
+      "Plot": "Do Hyun-jin investigates a serial murder and meets Soo-hyun disguised as a veterinarian. Bound by fate, the two set out to solve the connection that has linked them.",
+      "Language": "N/A",
+      "Country": "South Korea",
+      "Awards": "N/A",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BZTJmMGIwNWMtNjc5Yy00NDg5LWIzMmEtNDVjZDQ3M2MzYWNkXkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.6/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "7.6",
+      "imdbVotes": "1,515",
+      "imdbID": "tt9772814",
+      "Type": "series",
+      "totalSeasons": "1",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:40.378Z"
+  },
   "87601": {
     "title": "Sze U Tonight",
     "year": 2015,
@@ -12418,6 +12612,41 @@
     },
     "updated_at": "2026-05-25T08:20:57.126Z"
   },
+  "90755": {
+    "title": "The I-Land",
+    "year": 2019,
+    "media_type": "tv",
+    "response": {
+      "Title": "The I-Land",
+      "Year": "2019",
+      "Rated": "TV-MA",
+      "Released": "12 Sep 2019",
+      "Runtime": "281 min",
+      "Genre": "Adventure, Drama, Mystery",
+      "Director": "N/A",
+      "Writer": "Anthony Salter",
+      "Actors": "Natalie Martinez, Kate Bosworth, Ronald Peet",
+      "Plot": "When ten people wake up on a treacherous island with no memory of who they are and how they got there, they set off on a trek to try to get back home, only to discover the world is not as it seems.",
+      "Language": "English",
+      "Country": "United States",
+      "Awards": "2 wins total",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMDUxMDcxODYtODFhMi00YWI1LThmZjYtOTcwMDliMzk2ZGQ3XkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "4.7/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "4.7",
+      "imdbVotes": "20,714",
+      "imdbID": "tt9067020",
+      "Type": "series",
+      "totalSeasons": "1",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:33.488Z"
+  },
   "90761": {
     "title": "The Untamed",
     "year": 2019,
@@ -12452,6 +12681,41 @@
       "Response": "True"
     },
     "updated_at": "2026-05-25T08:13:08.087Z"
+  },
+  "91605": {
+    "title": "I Am...",
+    "year": 2019,
+    "media_type": "tv",
+    "response": {
+      "Title": "I Am...",
+      "Year": "2019–",
+      "Rated": "N/A",
+      "Released": "23 Jul 2019",
+      "Runtime": "47 min",
+      "Genre": "Drama",
+      "Director": "N/A",
+      "Writer": "Dominic Savage",
+      "Actors": "Samantha Morton, Gemma Chan, Vicky McClure",
+      "Plot": "Anthology series that explores the experiences of women in personal and emotional moments.",
+      "Language": "English",
+      "Country": "United Kingdom",
+      "Awards": "Won 2 BAFTA 4 wins & 5 nominations total",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BZTMxZTQ4MTEtODA4Mi00Zjc3LWFkMmItZGZlOWExNzY0ZjlmXkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.2/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "7.2",
+      "imdbVotes": "980",
+      "imdbID": "tt9165134",
+      "Type": "series",
+      "totalSeasons": "3",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:34.044Z"
   },
   "91783": {
     "title": "Apollo à la mer",
@@ -12812,6 +13076,41 @@
     },
     "updated_at": "2026-05-25T08:21:21.951Z"
   },
+  "100883": {
+    "title": "Never Have I Ever",
+    "year": 2020,
+    "media_type": "tv",
+    "response": {
+      "Title": "Never Have I Ever",
+      "Year": "2020–2023",
+      "Rated": "TV-14",
+      "Released": "27 Apr 2020",
+      "Runtime": "30 min",
+      "Genre": "Comedy, Drama",
+      "Director": "N/A",
+      "Writer": "Lang Fisher, Mindy Kaling",
+      "Actors": "Maitreyi Ramakrishnan, Poorna Jagannathan, Darren Barnet",
+      "Plot": "The complicated life of a first-generation Indian-American teenage girl, inspired by Mindy Kaling's own childhood.",
+      "Language": "English",
+      "Country": "United States",
+      "Awards": "8 wins & 17 nominations total",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BNzdhOGVjMTQtOTQ0Yi00ZWNjLTk2MjMtMWMzODczNWNiNmM3XkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.8/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "7.8",
+      "imdbVotes": "90,610",
+      "imdbID": "tt10062292",
+      "Type": "series",
+      "totalSeasons": "4",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:33.525Z"
+  },
   "102150": {
     "title": "The Men of the House",
     "year": 2020,
@@ -13046,6 +13345,41 @@
       "Response": "True"
     },
     "updated_at": "2026-05-25T08:20:50.902Z"
+  },
+  "105301": {
+    "title": "I-LAND",
+    "year": 2020,
+    "media_type": "tv",
+    "response": {
+      "Title": "I-Land",
+      "Year": "2020",
+      "Rated": "N/A",
+      "Released": "26 Jun 2020",
+      "Runtime": "N/A",
+      "Genre": "Game-Show, Music",
+      "Director": "N/A",
+      "Writer": "N/A",
+      "Actors": "Rain, Min Nam-koong, Zico",
+      "Plot": "23 young male K-pop trainees, born between 1997 and 2006, attempt to become the hottest new thing in global pop music. The trainee group has been working toward its big moment for some 12 months, with contestants selected at a ser...",
+      "Language": "Korean",
+      "Country": "South Korea",
+      "Awards": "N/A",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BZWZjOTMyZTMtODE4ZC00NGQ2LTg4YjgtMDhiODczZTYwZjkwXkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "4.7/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "4.7",
+      "imdbVotes": "40",
+      "imdbID": "tt29507844",
+      "Type": "series",
+      "totalSeasons": "1",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:38.917Z"
   },
   "106418": {
     "title": "Prime Rewind: Inside The Boys",
@@ -13371,6 +13705,41 @@
     },
     "updated_at": "2026-05-25T08:25:38.817Z"
   },
+  "112667": {
+    "title": "I★Chu: Halfway Through the Idol",
+    "year": 2021,
+    "media_type": "tv",
+    "response": {
+      "Title": "I-Chu: Halfway Through the Idol",
+      "Year": "2021–",
+      "Rated": "N/A",
+      "Released": "06 Jan 2021",
+      "Runtime": "N/A",
+      "Genre": "Animation, Music",
+      "Director": "N/A",
+      "Writer": "N/A",
+      "Actors": "Kenichiro Ohashi, Yûichi Iguchi, Toshiyuki Toyonaga",
+      "Plot": "Youths aiming to become full-fledged idols enroll in the Étoile Vio School where the students are called IChu. But soon after they begin, Kuma Kocho gets them off to a rocky start with a single phrase.",
+      "Language": "Japanese",
+      "Country": "Japan",
+      "Awards": "N/A",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BYmMzZTY3M2YtYTdhOS00NDQ4LTgzMjItZmY5NmFkYWM2NjEyXkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "6.7/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "6.7",
+      "imdbVotes": "27",
+      "imdbID": "tt13415416",
+      "Type": "series",
+      "totalSeasons": "1",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:32.513Z"
+  },
   "112945": {
     "title": "The Hardy Boys",
     "year": 2020,
@@ -13595,6 +13964,41 @@
     },
     "updated_at": "2026-05-25T07:45:51.518Z"
   },
+  "121702": {
+    "title": "Do It Yourself!!",
+    "year": 2022,
+    "media_type": "tv",
+    "response": {
+      "Title": "Do It Yourself!!",
+      "Year": "2022",
+      "Rated": "TV-14",
+      "Released": "06 Oct 2022",
+      "Runtime": "N/A",
+      "Genre": "Animation, Comedy, Drama",
+      "Director": "N/A",
+      "Writer": "N/A",
+      "Actors": "Konomi Inagaki, Kana Ichinose, Ayane Sakura",
+      "Plot": "High school girls working on DIY projects, as they struggle, fail, yet don't give up and see the projects through to their end. The story depicts the lives of those girls as they take the first step toward the future.",
+      "Language": "Japanese",
+      "Country": "Japan",
+      "Awards": "4 nominations total",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BNWE2OTM5ODItOWM2Ni00NjhjLWJhZWMtZjkxMjE3MTU2OTg0XkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.2/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "7.2",
+      "imdbVotes": "403",
+      "imdbID": "tt14323890",
+      "Type": "series",
+      "totalSeasons": "1",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:37.771Z"
+  },
   "122089": {
     "title": "Something in the Air",
     "year": 2012,
@@ -13679,6 +14083,44 @@
     },
     "updated_at": "2026-05-25T08:12:16.750Z"
   },
+  "122906": {
+    "title": "About Time (2013)",
+    "year": 2013,
+    "media_type": "movie",
+    "response": {
+      "Title": "About Time (2013)",
+      "Year": "2013",
+      "Rated": "N/A",
+      "Released": "02 Apr 2020",
+      "Runtime": "N/A",
+      "Genre": "N/A",
+      "Director": "N/A",
+      "Writer": "N/A",
+      "Actors": "N/A",
+      "Plot": "N/A",
+      "Language": "N/A",
+      "Country": "N/A",
+      "Awards": "N/A",
+      "Poster": "N/A",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.8/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "7.8",
+      "imdbVotes": "N/A",
+      "imdbID": "tt17977128",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "N/A",
+      "Production": "N/A",
+      "Website": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:50:17.717Z"
+  },
   "124041": {
     "title": "Mai Ban Zhi Jia",
     "year": 2003,
@@ -13748,6 +14190,25 @@
       "Response": "True"
     },
     "updated_at": "2026-05-25T18:05:23.253Z"
+  },
+  "124265": {
+    "title": "Yes, I Do",
+    "year": 2019,
+    "media_type": "tv",
+    "response": {
+      "Response": "True",
+      "Title": "Yes, I Do",
+      "Year": "2019",
+      "imdbID": "tt8319098",
+      "imdbRating": "5.8",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "5.8/10"
+        }
+      ]
+    },
+    "updated_at": "2026-06-01T06:51:39.726Z"
   },
   "124364": {
     "title": "FROM",
@@ -13844,6 +14305,25 @@
       ]
     },
     "updated_at": "2026-05-25T08:21:15.422Z"
+  },
+  "129037": {
+    "title": "It Sounds Incredible",
+    "year": 2021,
+    "media_type": "tv",
+    "response": {
+      "Response": "True",
+      "Title": "It Sounds Incredible",
+      "Year": "2021",
+      "imdbID": "",
+      "imdbRating": "0.0",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "0.0/10"
+        }
+      ]
+    },
+    "updated_at": "2026-06-01T06:51:44.366Z"
   },
   "130368": {
     "title": "Love Between Fairy and Devil",
@@ -14283,6 +14763,25 @@
     },
     "updated_at": "2026-05-25T07:19:05.254Z"
   },
+  "155330": {
+    "title": "In Geek We Trust",
+    "year": 2022,
+    "media_type": "tv",
+    "response": {
+      "Response": "True",
+      "Title": "In Geek We Trust",
+      "Year": "2022",
+      "imdbID": "tt16243268",
+      "imdbRating": "8.3",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "8.3/10"
+        }
+      ]
+    },
+    "updated_at": "2026-06-01T06:51:44.026Z"
+  },
   "157065": {
     "title": "The Fall of the House of Usher",
     "year": 2023,
@@ -14363,6 +14862,60 @@
       "Response": "True"
     },
     "updated_at": "2026-05-25T07:44:51.354Z"
+  },
+  "158445": {
+    "title": "Miracle in Cell No. 7 (2013)",
+    "year": 2013,
+    "media_type": "movie",
+    "response": {
+      "Response": "True",
+      "Title": "Miracle in Cell No. 7 (2013)",
+      "Year": "2013",
+      "imdbID": "tt2659414",
+      "imdbRating": "8.1",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "8.1/10"
+        }
+      ]
+    },
+    "updated_at": "2026-06-01T06:50:08.951Z"
+  },
+  "158646": {
+    "title": "Is It Cake?",
+    "year": 2022,
+    "media_type": "tv",
+    "response": {
+      "Title": "Is It Cake?",
+      "Year": "2022–",
+      "Rated": "TV-PG",
+      "Released": "18 Mar 2022",
+      "Runtime": "1 min",
+      "Genre": "Game-Show, Reality-TV",
+      "Director": "N/A",
+      "Writer": "N/A",
+      "Actors": "Mikey Day, Hemu Basu, Jonny Manganello",
+      "Plot": "Skilled cake artists create mouthwatering replicas of everyday objects, in a mind-bending baking contest inspired by a popular meme.",
+      "Language": "English",
+      "Country": "United States",
+      "Awards": "2 nominations total",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BNzdlZjY5NGYtODdiYy00YzdhLThhODUtOTE1ZDFlYzE1NmMyXkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "6.0/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "6.0",
+      "imdbVotes": "4,403",
+      "imdbID": "tt18314214",
+      "Type": "series",
+      "totalSeasons": "3",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:38.335Z"
   },
   "175112": {
     "title": "Tinker Bell and the Pirate Fairy",
@@ -14462,6 +15015,41 @@
     },
     "updated_at": "2026-05-25T08:12:33.431Z"
   },
+  "194766": {
+    "title": "The Summer I Turned Pretty",
+    "year": 2022,
+    "media_type": "tv",
+    "response": {
+      "Title": "The Summer I Turned Pretty",
+      "Year": "2022–2025",
+      "Rated": "TV-14",
+      "Released": "17 Jun 2022",
+      "Runtime": "N/A",
+      "Genre": "Drama, Romance",
+      "Director": "N/A",
+      "Writer": "Jenny Han",
+      "Actors": "Lola Tung, Christopher Briney, Gavin Casalegno",
+      "Plot": "A love triangle between one girl and two brothers. A story about first love, first heartbreak, and the magic of that one perfect summer.",
+      "Language": "English",
+      "Country": "United States",
+      "Awards": "3 wins & 4 nominations total",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BYjY0OWZkYjEtYzBmZC00NThhLWFjOGYtM2Q5NDA5MWJjZGVkXkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.3/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "7.3",
+      "imdbVotes": "70,153",
+      "imdbID": "tt14016500",
+      "Type": "series",
+      "totalSeasons": "3",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:31.109Z"
+  },
   "195314": {
     "title": "Cookin' Idol Ai! Mai! Main!",
     "year": 2009,
@@ -14516,6 +15104,60 @@
     },
     "updated_at": "2026-05-25T08:12:23.385Z"
   },
+  "198170": {
+    "title": "Play It Cool, Guys",
+    "year": 2022,
+    "media_type": "tv",
+    "response": {
+      "Title": "Play it Cool, Guys",
+      "Year": "2022–2023",
+      "Rated": "N/A",
+      "Released": "11 Oct 2022",
+      "Runtime": "N/A",
+      "Genre": "Animation, Short, Comedy",
+      "Director": "N/A",
+      "Writer": "N/A",
+      "Actors": "Chiaki Kobayashi, Yûichirô Umehara, Shoya Chiba",
+      "Plot": "A slice of life comedy about cool but secretly clumsy guys.",
+      "Language": "Japanese",
+      "Country": "Japan",
+      "Awards": "N/A",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMjVhOTljNjUtYjEzYy00OTEwLThlMmYtYzFjZDY4NTNkOGE2XkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.1/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "7.1",
+      "imdbVotes": "314",
+      "imdbID": "tt21345982",
+      "Type": "series",
+      "totalSeasons": "1",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:37.702Z"
+  },
+  "198277": {
+    "title": "Begin Again (2013)",
+    "year": 2014,
+    "media_type": "movie",
+    "response": {
+      "Response": "True",
+      "Title": "Begin Again (2013)",
+      "Year": "2014",
+      "imdbID": "tt1980929",
+      "imdbRating": "7.4",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.4/10"
+        }
+      ]
+    },
+    "updated_at": "2026-06-01T06:50:18.386Z"
+  },
   "199001": {
     "title": "My Life with the Walter Boys",
     "year": 2023,
@@ -14551,6 +15193,41 @@
     },
     "updated_at": "2026-05-25T07:19:05.865Z"
   },
+  "199175": {
+    "title": "Barbie: It Takes Two",
+    "year": 2022,
+    "media_type": "tv",
+    "response": {
+      "Title": "Barbie: It Takes Two",
+      "Year": "2022",
+      "Rated": "TV-G",
+      "Released": "08 Apr 2022",
+      "Runtime": "N/A",
+      "Genre": "Animation, Short, Adventure",
+      "Director": "N/A",
+      "Writer": "N/A",
+      "Actors": "America Young, Tatiana Varria, Daysha Ligeon",
+      "Plot": "Barbie \"Malibu\" Roberts and Barbie \"Brooklyn\" Roberts chase their dreams of musical stardom.",
+      "Language": "English",
+      "Country": "United States",
+      "Awards": "N/A",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BOGNlNjZmZTEtYjZlNS00YTk2LTg3YjYtZDNjYzcyYWNjZjU4XkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "6.2/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "6.2",
+      "imdbVotes": "136",
+      "imdbID": "tt19178656",
+      "Type": "series",
+      "totalSeasons": "2",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:38.261Z"
+  },
   "200709": {
     "title": "Weak Hero",
     "year": 2022,
@@ -14585,6 +15262,41 @@
       "Response": "True"
     },
     "updated_at": "2026-05-25T08:53:01.837Z"
+  },
+  "200875": {
+    "title": "IT: Welcome to Derry",
+    "year": 2025,
+    "media_type": "tv",
+    "response": {
+      "Title": "It: Welcome to Derry",
+      "Year": "2025–",
+      "Rated": "TV-MA",
+      "Released": "26 Oct 2025",
+      "Runtime": "N/A",
+      "Genre": "Fantasy, Horror",
+      "Director": "N/A",
+      "Writer": "Jason Fuchs, Andy Muschietti, Barbara Muschietti",
+      "Actors": "Jovan Adepo, Bill Skarsgård, Taylour Paige",
+      "Plot": "In 1962, a couple with their son move to Derry, Maine just as a young boy disappears. With their arrival, very bad things begin to happen in the town.",
+      "Language": "English",
+      "Country": "Canada, United States",
+      "Awards": "3 wins & 10 nominations total",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BZWE0ZWM1MjUtNmYzYS00NzU3LTkxYmQtNmI3NTc0ZTY1NmVlXkEyXkFqcGc@._V1_QL75_UY562_CR35,0,380,562_.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.9/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "7.9",
+      "imdbVotes": "104,447",
+      "imdbID": "tt19244304",
+      "Type": "series",
+      "totalSeasons": "1",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:36.024Z"
   },
   "202575": {
     "title": "The House of Magic",
@@ -14793,6 +15505,41 @@
       "Response": "True"
     },
     "updated_at": "2026-05-25T08:25:22.493Z"
+  },
+  "205827": {
+    "title": "I SWIM",
+    "year": 2022,
+    "media_type": "tv",
+    "response": {
+      "Title": "i.Swim",
+      "Year": "2022–",
+      "Rated": "N/A",
+      "Released": "N/A",
+      "Runtime": "N/A",
+      "Genre": "Drama",
+      "Director": "N/A",
+      "Writer": "N/A",
+      "Actors": "Edan Cheuk On Lui, Jeffrey Ngai, Hoi-Yan Ng",
+      "Plot": "This is a story of rivalry and friendship between two young swimmers; a tale of natural talent versus hard work. Talented swimmer Chung is a transfer student. In his new class, 4C, he meets a swim relay team led by Wing. Despite b...",
+      "Language": "Cantonese",
+      "Country": "Hong Kong",
+      "Awards": "N/A",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BNjMwYzIzMDQtODgwZS00NDdjLTg2OTUtMjYzYTg5YjY5NGUyXkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "5.7/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "5.7",
+      "imdbVotes": "33",
+      "imdbID": "tt16243234",
+      "Type": "series",
+      "totalSeasons": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:33.184Z"
   },
   "206567": {
     "title": "Darknet-sur-Mer",
@@ -15336,6 +16083,41 @@
     },
     "updated_at": "2026-05-25T08:49:19.493Z"
   },
+  "225941": {
+    "title": "I Am Nobody",
+    "year": 2023,
+    "media_type": "tv",
+    "response": {
+      "Title": "I Am Nobody",
+      "Year": "2023–",
+      "Rated": "N/A",
+      "Released": "04 Aug 2023",
+      "Runtime": "N/A",
+      "Genre": "Action, Adventure, Drama",
+      "Director": "N/A",
+      "Writer": "Mi Er",
+      "Actors": "Yuchang Peng, Yinglu Wang, Minghao Hou",
+      "Plot": "When a student unearths the truth behind his grandfather's life, he must unveil his secret superpowers to an underworld eager for his emergence.",
+      "Language": "Mandarin, Chinese",
+      "Country": "China",
+      "Awards": "7 wins & 6 nominations total",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BNTk1YTRhYmEtOTgzMi00YzUwLTljMTctMzA2ZjAzM2JiZTM0XkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.6/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "7.6",
+      "imdbVotes": "553",
+      "imdbID": "tt26031462",
+      "Type": "series",
+      "totalSeasons": "2",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:27.278Z"
+  },
   "226008": {
     "title": "Michael",
     "year": 2011,
@@ -15435,6 +16217,41 @@
       ]
     },
     "updated_at": "2026-05-25T08:21:29.156Z"
+  },
+  "227447": {
+    "title": "DIY!!: Do It Yourself",
+    "year": 2023,
+    "media_type": "tv",
+    "response": {
+      "Title": "DIY!!: Do It Yourself",
+      "Year": "2023",
+      "Rated": "N/A",
+      "Released": "04 Jul 2023",
+      "Runtime": "N/A",
+      "Genre": "Comedy",
+      "Director": "N/A",
+      "Writer": "N/A",
+      "Actors": "Hinano Kamimura, Iori Noguchi, Kokoro Hirasawa",
+      "Plot": "The lives of a do-it-yourself club and its members as they work on building and fixing things.",
+      "Language": "Japanese",
+      "Country": "Japan",
+      "Awards": "N/A",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BNDk2ZDQwYzctNGNkNy00NWU2LWJlYjQtNzlhM2JiMDlkMTQ4XkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.1/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "7.1",
+      "imdbVotes": "7",
+      "imdbID": "tt27504510",
+      "Type": "series",
+      "totalSeasons": "1",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:37.229Z"
   },
   "228247": {
     "title": "R U Next?",
@@ -15841,6 +16658,41 @@
     },
     "updated_at": "2026-05-25T07:18:01.912Z"
   },
+  "241506": {
+    "title": "It's Okay to Not Be Okay",
+    "year": 2025,
+    "media_type": "tv",
+    "response": {
+      "Title": "It's Okay to Not Be Okay",
+      "Year": "2025–",
+      "Rated": "N/A",
+      "Released": "21 Jul 2025",
+      "Runtime": "N/A",
+      "Genre": "Comedy, Drama, Romance",
+      "Director": "N/A",
+      "Writer": "N/A",
+      "Actors": "Anne Curtis, Joshua Garcia, Carlo Aquino",
+      "Plot": "It follows Mia, a woman diagnosed with an antisocial personality disorder, who gets romantically involved with Patpat, a psych ward caretaker, who has dedicated his life to taking care of his autistic older brother Matmat.",
+      "Language": "Filipino",
+      "Country": "Philippines",
+      "Awards": "N/A",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BZWUyZDBmZWMtMGQxNy00ZDI1LTgwYWUtYTI5MGYxNmI3ODk1XkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "8.1/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "8.1",
+      "imdbVotes": "10",
+      "imdbID": "tt30429330",
+      "Type": "series",
+      "totalSeasons": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T07:01:24.733Z"
+  },
   "243300": {
     "title": "Jo mai mai",
     "year": 2024,
@@ -15921,6 +16773,41 @@
       "Response": "True"
     },
     "updated_at": "2026-05-25T07:44:57.582Z"
+  },
+  "246111": {
+    "title": "How Are You? It's Alan (Partridge)",
+    "year": 2025,
+    "media_type": "tv",
+    "response": {
+      "Title": "How Are You? It's Alan (Partridge)",
+      "Year": "2025–",
+      "Rated": "N/A",
+      "Released": "03 Oct 2025",
+      "Runtime": "N/A",
+      "Genre": "Comedy",
+      "Director": "N/A",
+      "Writer": "N/A",
+      "Actors": "N/A",
+      "Plot": "Partridge's life after returning to Norfolk from Saudi Arabia where he spent a year. His struggles to readjust to his hometown and reintegrate into society.",
+      "Language": "N/A",
+      "Country": "N/A",
+      "Awards": "N/A",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BNmU0NzZhZTgtOGY4ZS00YTI4LWI5ZmQtMTE3OGJjNzczMzRhXkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.7/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "7.7",
+      "imdbVotes": "299",
+      "imdbID": "tt32410998",
+      "Type": "series",
+      "totalSeasons": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T07:01:23.700Z"
   },
   "246331": {
     "title": "Su Ji and U Ri",
@@ -16424,6 +17311,41 @@
     },
     "updated_at": "2026-05-25T08:49:20.432Z"
   },
+  "262388": {
+    "title": "M.I.A.",
+    "year": 2026,
+    "media_type": "tv",
+    "response": {
+      "Title": "M.I.A.",
+      "Year": "2026–",
+      "Rated": "TV-14",
+      "Released": "07 May 2026",
+      "Runtime": "N/A",
+      "Genre": "Crime, Drama, Thriller",
+      "Director": "N/A",
+      "Writer": "Bill Dubuque",
+      "Actors": "Shannon Gisela, Brittany Adebumola, Dylan T Jackson",
+      "Plot": "Etta Tiger Jonze seeks to avenge her family's murder and become the most powerful crime queenpin in South Florida.",
+      "Language": "English",
+      "Country": "United States",
+      "Awards": "N/A",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BYzA5NjAxMGItNTE5ZC00ZDhmLTk2NzEtYmUzZWNkNjllMzA2XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "6.3/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "6.3",
+      "imdbVotes": "884",
+      "imdbID": "tt33253070",
+      "Type": "series",
+      "totalSeasons": "1",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:25.636Z"
+  },
   "263054": {
     "title": "A Thousand Miles to Your Heart",
     "year": 2026,
@@ -16545,6 +17467,44 @@
       "Response": "True"
     },
     "updated_at": "2026-05-25T18:05:24.341Z"
+  },
+  "270303": {
+    "title": "It Follows",
+    "year": 2015,
+    "media_type": "movie",
+    "response": {
+      "Title": "At the Movies: Lamar and Darnell - It Follows",
+      "Year": "2015",
+      "Rated": "N/A",
+      "Released": "N/A",
+      "Runtime": "3 min",
+      "Genre": "Documentary, Short",
+      "Director": "Jonathan Elliot Levy, Casey Smith",
+      "Writer": "Jonathan Elliot Levy, Casey Smith",
+      "Actors": "Christine Fang, Jonathan Elliot Levy, Casey Smith",
+      "Plot": "Being filmed and edited in character, 'At The Movies' follows Lamar and Darnell as they attempt to review movies and help you along the path towards enlightenment. About The Stars of 'At The Movies': Lamar and Darnell began review...",
+      "Language": "English",
+      "Country": "United States",
+      "Awards": "N/A",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BYTI4OWJiN2UtOTkxOS00MGRlLWE2OTYtNzAyYTkzY2UyMzQ4XkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "6.8/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "6.8",
+      "imdbVotes": "N/A",
+      "imdbID": "tt5637996",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "N/A",
+      "Production": "N/A",
+      "Website": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:48.619Z"
   },
   "270476": {
     "title": "Widow's Bay",
@@ -16863,6 +17823,41 @@
       "Response": "True"
     },
     "updated_at": "2026-05-25T08:12:26.114Z"
+  },
+  "282662": {
+    "title": "With You, Our Love Will Make It Through",
+    "year": 2025,
+    "media_type": "tv",
+    "response": {
+      "Title": "With You, Our Love Will Make It Through",
+      "Year": "2025–",
+      "Rated": "N/A",
+      "Released": "14 Oct 2025",
+      "Runtime": "N/A",
+      "Genre": "Animation, Fantasy, Romance",
+      "Director": "N/A",
+      "Writer": "N/A",
+      "Actors": "William Ofoegbu, Marisa Duran, Yôhei Matsuoka",
+      "Plot": "A shy high school girl's life changes when she meets her school's new student - a beastfolk teen. Despite initial nervousness and social prejudices, she discovers a deep connection with him that grows into something more.",
+      "Language": "N/A",
+      "Country": "Japan",
+      "Awards": "1 nomination total",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BYTE4MDBlMmItNWYyZi00MTAzLTgxN2ItZTJhZDNkNDBlOWQyXkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "6.7/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "6.7",
+      "imdbVotes": "488",
+      "imdbID": "tt36221414",
+      "Type": "series",
+      "totalSeasons": "1",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T07:01:22.769Z"
   },
   "284110": {
     "title": "The Lead",
@@ -17410,6 +18405,41 @@
     },
     "updated_at": "2026-05-25T08:53:00.018Z"
   },
+  "296719": {
+    "title": "Then You Try Making It!",
+    "year": 2025,
+    "media_type": "tv",
+    "response": {
+      "Title": "Then You Try Making It!",
+      "Year": "2025",
+      "Rated": "N/A",
+      "Released": "07 Oct 2025",
+      "Runtime": "N/A",
+      "Genre": "N/A",
+      "Director": "N/A",
+      "Writer": "N/A",
+      "Actors": "Kaho, Ryoma Takeuchi, Ayami Nakajô",
+      "Plot": "The story focuses on a couple who have been dating since their college days. Katsuo Ebihara has a patriarchal belief and thinks that woman should be the one who cooks. Meanwhile, Ayumi Yamagichi always put her lover first and slow...",
+      "Language": "Japanese",
+      "Country": "Japan",
+      "Awards": "N/A",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BYzNlZGFkYjAtNDM4ZS00YTdjLTlhZjAtYzdiN2IwOWE1OTQ4XkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "8.2/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "8.2",
+      "imdbVotes": "82",
+      "imdbID": "tt38627818",
+      "Type": "series",
+      "totalSeasons": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T07:01:23.388Z"
+  },
   "297315": {
     "title": "Oppenheimer und die Bombe",
     "year": 2025,
@@ -17594,6 +18624,60 @@
     },
     "updated_at": "2026-05-25T07:45:10.257Z"
   },
+  "299799": {
+    "title": "ESCAPE It Was Supposed to be a Kidnapping",
+    "year": 2025,
+    "media_type": "tv",
+    "response": {
+      "Response": "True",
+      "Title": "ESCAPE It Was Supposed to be a Kidnapping",
+      "Year": "2025",
+      "imdbID": "",
+      "imdbRating": "8.2",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "8.2/10"
+        }
+      ]
+    },
+    "updated_at": "2026-06-01T07:01:28.457Z"
+  },
+  "300003": {
+    "title": "He Had It Coming",
+    "year": 2025,
+    "media_type": "tv",
+    "response": {
+      "Title": "He Had It Coming",
+      "Year": "2025–",
+      "Rated": "N/A",
+      "Released": "20 Nov 2025",
+      "Runtime": "N/A",
+      "Genre": "Drama",
+      "Director": "N/A",
+      "Writer": "N/A",
+      "Actors": "Lydia West, Natasha Liu Bordizzo, Liv Hewson",
+      "Plot": "An awkward scholarship student and a social media influencer vandalize a university statue in protest. The next morning, they discover a murdered athlete at its base and must clear their names while finding the real killer.",
+      "Language": "English",
+      "Country": "Australia",
+      "Awards": "N/A",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BNjA3OTU3ODEtMTUxNS00ZWQwLWFhMjYtNGY2YjIzN2RlMWM1XkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "6.1/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "6.1",
+      "imdbVotes": "N/A",
+      "imdbID": "tt35836656",
+      "Type": "series",
+      "totalSeasons": "1",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T07:01:22.361Z"
+  },
   "300131": {
     "title": "KILL BLUE",
     "year": 2026,
@@ -17647,6 +18731,41 @@
       "Response": "True"
     },
     "updated_at": "2026-05-25T08:51:15.810Z"
+  },
+  "300594": {
+    "title": "Is It Cake? Halloween",
+    "year": 2025,
+    "media_type": "tv",
+    "response": {
+      "Title": "Is It Cake? Halloween",
+      "Year": "2025–",
+      "Rated": "N/A",
+      "Released": "N/A",
+      "Runtime": "N/A",
+      "Genre": "N/A",
+      "Director": "N/A",
+      "Writer": "N/A",
+      "Actors": "Mikey Day",
+      "Plot": "N/A",
+      "Language": "N/A",
+      "Country": "United States",
+      "Awards": "N/A",
+      "Poster": "N/A",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "6.5/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "6.5",
+      "imdbVotes": "N/A",
+      "imdbID": "tt37610484",
+      "Type": "series",
+      "totalSeasons": "1",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T07:01:28.409Z"
   },
   "301507": {
     "title": "Heated Rivalry",
@@ -17702,6 +18821,25 @@
     },
     "updated_at": "2026-05-25T08:59:11.511Z"
   },
+  "302935": {
+    "title": "Miraculous: Make It!",
+    "year": 2025,
+    "media_type": "tv",
+    "response": {
+      "Response": "True",
+      "Title": "Miraculous: Make It!",
+      "Year": "2025",
+      "imdbID": "",
+      "imdbRating": "0.0",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "0.0/10"
+        }
+      ]
+    },
+    "updated_at": "2026-06-01T07:01:27.712Z"
+  },
   "303143": {
     "title": "My Royal Nemesis",
     "year": 2026,
@@ -17739,6 +18877,25 @@
       ]
     },
     "updated_at": "2026-06-01T05:33:07.846Z"
+  },
+  "304337": {
+    "title": "'Til You Make It",
+    "year": 2025,
+    "media_type": "tv",
+    "response": {
+      "Response": "True",
+      "Title": "'Til You Make It",
+      "Year": "2025",
+      "imdbID": "tt27197168",
+      "imdbRating": "8.6",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "8.6/10"
+        }
+      ]
+    },
+    "updated_at": "2026-06-01T07:01:21.601Z"
   },
   "305079": {
     "title": "Smile After Tears",
@@ -17778,6 +18935,41 @@
     },
     "updated_at": "2026-05-25T08:12:22.620Z"
   },
+  "306215": {
+    "title": "The One I Love",
+    "year": 2026,
+    "media_type": "tv",
+    "response": {
+      "Title": "You Are the One I Love",
+      "Year": "2026–",
+      "Rated": "N/A",
+      "Released": "12 Feb 2026",
+      "Runtime": "N/A",
+      "Genre": "Drama",
+      "Director": "N/A",
+      "Writer": "N/A",
+      "Actors": "Helin Kandemir, Aytaç Sasmaz, Baris Baktas",
+      "Plot": "A village girl's world changes when she meets a soldier from Istanbul doing his mandatory service in her rural community. Their connection challenges social barriers and traditional expectations.",
+      "Language": "Turkish",
+      "Country": "Turkey",
+      "Awards": "N/A",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BYzhmMjFlMGItNTA0Ny00ZWIyLTg1MTItYjYyNDMzMTI2ZmM1XkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "8.4/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "8.4",
+      "imdbVotes": "51",
+      "imdbID": "tt38987259",
+      "Type": "series",
+      "totalSeasons": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:25.692Z"
+  },
   "306479": {
     "title": "PROJECT R.E.D.",
     "year": 2026,
@@ -17796,6 +18988,25 @@
       ]
     },
     "updated_at": "2026-05-25T08:59:11.057Z"
+  },
+  "306529": {
+    "title": "A.B.I.: A Broken Inheritance",
+    "year": 2026,
+    "media_type": "tv",
+    "response": {
+      "Response": "True",
+      "Title": "A.B.I.: A Broken Inheritance",
+      "Year": "2026",
+      "imdbID": "",
+      "imdbRating": "6.7",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "6.7/10"
+        }
+      ]
+    },
+    "updated_at": "2026-06-01T06:51:30.557Z"
   },
   "308014": {
     "title": "Berlin and the Lady with an Ermine",
@@ -17831,6 +19042,25 @@
       "Response": "True"
     },
     "updated_at": "2026-05-25T08:49:20.221Z"
+  },
+  "308897": {
+    "title": "The Wives Did It",
+    "year": 2025,
+    "media_type": "tv",
+    "response": {
+      "Response": "True",
+      "Title": "The Wives Did It",
+      "Year": "2025",
+      "imdbID": "tt41877708",
+      "imdbRating": "8.0",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "8.0/10"
+        }
+      ]
+    },
+    "updated_at": "2026-06-01T07:01:22.191Z"
   },
   "309425": {
     "title": "Tận Hiến",
@@ -18652,6 +19882,44 @@
     },
     "updated_at": "2026-05-25T07:44:55.598Z"
   },
+  "329865": {
+    "title": "Arrival (2016)",
+    "year": 2016,
+    "media_type": "movie",
+    "response": {
+      "Title": "Denis VilleNovember: Arrival (2016)",
+      "Year": "2016",
+      "Rated": "N/A",
+      "Released": "17 Nov 2021",
+      "Runtime": "N/A",
+      "Genre": "N/A",
+      "Director": "N/A",
+      "Writer": "N/A",
+      "Actors": "N/A",
+      "Plot": "N/A",
+      "Language": "N/A",
+      "Country": "N/A",
+      "Awards": "N/A",
+      "Poster": "N/A",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.9/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "7.9",
+      "imdbVotes": "N/A",
+      "imdbID": "tt25078206",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "N/A",
+      "Production": "N/A",
+      "Website": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:50:09.525Z"
+  },
   "334543": {
     "title": "Lion",
     "year": 2016,
@@ -18735,6 +20003,90 @@
       "Response": "True"
     },
     "updated_at": "2026-05-25T08:21:10.340Z"
+  },
+  "339403": {
+    "title": "Baby Driver (2017)",
+    "year": 2017,
+    "media_type": "movie",
+    "response": {
+      "Title": "Baby Driver (2017)",
+      "Year": "2017",
+      "Rated": "N/A",
+      "Released": "14 Jun 2018",
+      "Runtime": "N/A",
+      "Genre": "N/A",
+      "Director": "N/A",
+      "Writer": "N/A",
+      "Actors": "N/A",
+      "Plot": "N/A",
+      "Language": "N/A",
+      "Country": "N/A",
+      "Awards": "N/A",
+      "Poster": "N/A",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.5/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "7.5",
+      "imdbVotes": "N/A",
+      "imdbID": "tt17977704",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "N/A",
+      "Production": "N/A",
+      "Website": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:50:10.202Z"
+  },
+  "346364": {
+    "title": "It",
+    "year": 2017,
+    "media_type": "movie",
+    "response": {
+      "Title": "It",
+      "Year": "2017",
+      "Rated": "R",
+      "Released": "08 Sep 2017",
+      "Runtime": "135 min",
+      "Genre": "Horror",
+      "Director": "Andy Muschietti",
+      "Writer": "Chase Palmer, Cary Joji Fukunaga, Gary Dauberman",
+      "Actors": "Bill Skarsgård, Jaeden Martell, Finn Wolfhard",
+      "Plot": "In the summer of 1989, a group of bullied kids band together to destroy a shape-shifting monster, which disguises itself as a clown and preys on the children of Derry, their small Maine town.",
+      "Language": "English, Hebrew",
+      "Country": "United States",
+      "Awards": "12 wins & 49 nominations total",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BZGZmOTZjNzUtOTE4OS00OGM3LWJiNGEtZjk4Yzg2M2Q1YzYxXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.3/10"
+        },
+        {
+          "Source": "Rotten Tomatoes",
+          "Value": "85%"
+        },
+        {
+          "Source": "Metacritic",
+          "Value": "69/100"
+        }
+      ],
+      "Metascore": "69",
+      "imdbRating": "7.3",
+      "imdbVotes": "694,027",
+      "imdbID": "tt1396484",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "$328,874,981",
+      "Production": "N/A",
+      "Website": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:41.187Z"
   },
   "347688": {
     "title": "Scooby-Doo! and KISS: Rock and Roll Mystery",
@@ -19309,6 +20661,52 @@
     },
     "updated_at": "2026-05-25T16:56:40.797Z"
   },
+  "384677": {
+    "title": "Set It Up",
+    "year": 2018,
+    "media_type": "movie",
+    "response": {
+      "Title": "Set It Up",
+      "Year": "2018",
+      "Rated": "TV-14",
+      "Released": "15 Jun 2018",
+      "Runtime": "105 min",
+      "Genre": "Comedy, Romance",
+      "Director": "Claire Scanlon",
+      "Writer": "Katie Silberman",
+      "Actors": "Zoey Deutch, Glen Powell, Lucy Liu",
+      "Plot": "Two corporate executive assistants hatch a plan to match-make their two bosses.",
+      "Language": "English",
+      "Country": "United States",
+      "Awards": "1 nomination total",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMTk0MDUyMzA1OF5BMl5BanBnXkFtZTgwNzA4NzE1NTM@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "6.5/10"
+        },
+        {
+          "Source": "Rotten Tomatoes",
+          "Value": "92%"
+        },
+        {
+          "Source": "Metacritic",
+          "Value": "62/100"
+        }
+      ],
+      "Metascore": "62",
+      "imdbRating": "6.5",
+      "imdbVotes": "74,721",
+      "imdbID": "tt5304992",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "N/A",
+      "Production": "N/A",
+      "Website": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:40.807Z"
+  },
   "395943": {
     "title": "The Ghost of the One Eyed Man",
     "year": 1965,
@@ -19614,6 +21012,52 @@
       "Response": "True"
     },
     "updated_at": "2026-05-25T07:45:30.359Z"
+  },
+  "423108": {
+    "title": "The Conjuring: The Devil Made Me Do It",
+    "year": 2021,
+    "media_type": "movie",
+    "response": {
+      "Title": "The Conjuring: The Devil Made Me Do It",
+      "Year": "2021",
+      "Rated": "R",
+      "Released": "04 Jun 2021",
+      "Runtime": "112 min",
+      "Genre": "Horror, Mystery, Thriller",
+      "Director": "Michael Chaves",
+      "Writer": "David Leslie Johnson-McGoldrick, James Wan, Chad Hayes",
+      "Actors": "Patrick Wilson, Vera Farmiga, Ruairi O'Connor",
+      "Plot": "Arne Cheyenne Johnson stabs and murders his landlord, claiming to be under demonic possession while Ed and Lorraine Warren investigate the case and try to prove his innocence.",
+      "Language": "English, Latin",
+      "Country": "United States",
+      "Awards": "N/A",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BNThkYWE3OGItNzAyNC00N2U4LThjY2QtMGQwYjZhYTI1MzMwXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "6.2/10"
+        },
+        {
+          "Source": "Rotten Tomatoes",
+          "Value": "56%"
+        },
+        {
+          "Source": "Metacritic",
+          "Value": "53/100"
+        }
+      ],
+      "Metascore": "53",
+      "imdbRating": "6.2",
+      "imdbVotes": "168,696",
+      "imdbID": "tt7069210",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "$65,631,050",
+      "Production": "N/A",
+      "Website": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:39.484Z"
   },
   "433422": {
     "title": "Fairy Tail: Dragon Cry",
@@ -20087,6 +21531,52 @@
       "Response": "True"
     },
     "updated_at": "2026-05-25T07:45:57.850Z"
+  },
+  "474350": {
+    "title": "It Chapter Two",
+    "year": 2019,
+    "media_type": "movie",
+    "response": {
+      "Title": "It: Chapter Two",
+      "Year": "2019",
+      "Rated": "R",
+      "Released": "06 Sep 2019",
+      "Runtime": "169 min",
+      "Genre": "Drama, Fantasy, Horror",
+      "Director": "Andy Muschietti",
+      "Writer": "Stephen King, Gary Dauberman",
+      "Actors": "Jessica Chastain, James McAvoy, Bill Hader",
+      "Plot": "Twenty-seven years after their first encounter with the terrifying Pennywise, the Losers Club have grown up and moved away, until a devastating phone call brings them back.",
+      "Language": "English, North American Indian, Spanish",
+      "Country": "United States, Canada",
+      "Awards": "7 wins & 34 nominations total",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BYzUxM2VhOGItZTY2My00OTA4LWI4NjUtMDA5YWJjM2M2NDJjXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "6.5/10"
+        },
+        {
+          "Source": "Rotten Tomatoes",
+          "Value": "62%"
+        },
+        {
+          "Source": "Metacritic",
+          "Value": "58/100"
+        }
+      ],
+      "Metascore": "58",
+      "imdbRating": "6.5",
+      "imdbVotes": "353,654",
+      "imdbID": "tt7349950",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "$211,622,525",
+      "Production": "N/A",
+      "Website": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:40.267Z"
   },
   "475557": {
     "title": "Joker",
@@ -20837,6 +22327,52 @@
     },
     "updated_at": "2026-05-25T07:45:21.250Z"
   },
+  "524251": {
+    "title": "I See You",
+    "year": 2019,
+    "media_type": "movie",
+    "response": {
+      "Title": "I See You",
+      "Year": "2019",
+      "Rated": "R",
+      "Released": "01 Oct 2025",
+      "Runtime": "98 min",
+      "Genre": "Horror, Mystery, Thriller",
+      "Director": "Adam Randall",
+      "Writer": "Devon Graye",
+      "Actors": "Helen Hunt, Jon Tenney, Owen Teague",
+      "Plot": "In this psychological thriller, the lead investigator on a missing person case struggles to balance work and home life. When the family is put in mortal danger, an evil truth about their home is finally uncovered.",
+      "Language": "English",
+      "Country": "United States, United Kingdom",
+      "Awards": "1 win & 1 nomination total",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BZmFjNTE5NGQtNTEyYy00YzgwLWEzNGQtNDNhYTRmMDUxOTk4XkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "6.8/10"
+        },
+        {
+          "Source": "Rotten Tomatoes",
+          "Value": "73%"
+        },
+        {
+          "Source": "Metacritic",
+          "Value": "65/100"
+        }
+      ],
+      "Metascore": "65",
+      "imdbRating": "6.8",
+      "imdbVotes": "73,539",
+      "imdbID": "tt6079516",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "N/A",
+      "Production": "N/A",
+      "Website": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:33.837Z"
+  },
   "526702": {
     "title": "Black Beauty",
     "year": 2020,
@@ -21047,6 +22583,44 @@
     },
     "updated_at": "2026-05-25T07:45:02.800Z"
   },
+  "535807": {
+    "title": "It's Christmas, Eve",
+    "year": 2018,
+    "media_type": "movie",
+    "response": {
+      "Title": "It's Christmas, Eve",
+      "Year": "2018",
+      "Rated": "TV-G",
+      "Released": "10 Nov 2018",
+      "Runtime": "84 min",
+      "Genre": "Drama, Music, Romance",
+      "Director": "Tibor Takács",
+      "Writer": "Tracy Andreen, Mark Amato",
+      "Actors": "LeAnn Rimes, Tyler Hynes, Gwynyth Walsh",
+      "Plot": "An interim school superintendent finds herself in a tough spot when she is assigned to shut down a school's failing music program, and must come to terms with her musical past.",
+      "Language": "English",
+      "Country": "United States, Canada",
+      "Awards": "1 win & 3 nominations",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMWI3MDZjMmEtMWQzMi00MGNhLThmMzgtOGQ4MjkyZmIzM2QwXkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "6.6/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "6.6",
+      "imdbVotes": "1,667",
+      "imdbID": "tt8300786",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "N/A",
+      "Production": "N/A",
+      "Website": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:40.602Z"
+  },
   "537061": {
     "title": "Steven Universe: The Movie",
     "year": 2019,
@@ -21248,6 +22822,25 @@
       ]
     },
     "updated_at": "2026-05-25T08:21:31.834Z"
+  },
+  "568160": {
+    "title": "Weathering with You (2019)",
+    "year": 2019,
+    "media_type": "movie",
+    "response": {
+      "Response": "True",
+      "Title": "Weathering with You (2019)",
+      "Year": "2019",
+      "imdbID": "tt9426210",
+      "imdbRating": "7.5",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.5/10"
+        }
+      ]
+    },
+    "updated_at": "2026-06-01T06:50:15.539Z"
   },
   "568332": {
     "title": "Taylor Swift: Reputation Stadium Tour",
@@ -21528,6 +23121,44 @@
     },
     "updated_at": "2026-05-25T07:19:07.011Z"
   },
+  "598413": {
+    "title": "Send It!",
+    "year": 2021,
+    "media_type": "movie",
+    "response": {
+      "Title": "Send It!",
+      "Year": "2021",
+      "Rated": "R",
+      "Released": "11 May 2021",
+      "Runtime": "101 min",
+      "Genre": "Action, Adventure, Comedy",
+      "Director": "Andrew Stevens",
+      "Writer": "Charles McKinney",
+      "Actors": "Kevin Quinn, Natalie Dickinson, Dixie McKinney",
+      "Plot": "An extreme sportsman's life forever changes upon departing his simple Texas roots to compete in the world's most prestigious Kiteboarding Championship. Along the way, an edgy street-smart girl challenges him well beyond just kiting.",
+      "Language": "English",
+      "Country": "United States",
+      "Awards": "N/A",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BNDJkOTNmMjgtNmIwNS00YjBhLTg3YWUtYzM3MjgxNTAwMTNkXkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "4.6/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "4.6",
+      "imdbVotes": "291",
+      "imdbID": "tt9009826",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "N/A",
+      "Production": "N/A",
+      "Website": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:39.813Z"
+  },
   "600354": {
     "title": "The Father",
     "year": 2020,
@@ -21573,6 +23204,44 @@
       "Response": "True"
     },
     "updated_at": "2026-05-25T07:45:33.474Z"
+  },
+  "601666": {
+    "title": "I Care a Lot",
+    "year": 2021,
+    "media_type": "movie",
+    "response": {
+      "Title": "FailurePiece Theater ep 36: I Care a Lot. (2021)",
+      "Year": "2021",
+      "Rated": "N/A",
+      "Released": "07 Apr 2021",
+      "Runtime": "N/A",
+      "Genre": "N/A",
+      "Director": "N/A",
+      "Writer": "N/A",
+      "Actors": "N/A",
+      "Plot": "N/A",
+      "Language": "N/A",
+      "Country": "N/A",
+      "Awards": "N/A",
+      "Poster": "N/A",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "6.4/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "6.4",
+      "imdbVotes": "N/A",
+      "imdbID": "tt22606428",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "N/A",
+      "Production": "N/A",
+      "Website": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:39.243Z"
   },
   "602409": {
     "title": "Micha",
@@ -21832,6 +23501,52 @@
       "Response": "True"
     },
     "updated_at": "2026-05-25T07:45:37.432Z"
+  },
+  "612706": {
+    "title": "Work It",
+    "year": 2020,
+    "media_type": "movie",
+    "response": {
+      "Title": "Work It",
+      "Year": "2020",
+      "Rated": "TV-14",
+      "Released": "07 Aug 2020",
+      "Runtime": "93 min",
+      "Genre": "Comedy, Music",
+      "Director": "Laura Terruso",
+      "Writer": "Alison Peck",
+      "Actors": "Keiynan Lonsdale, Liza Koshy, Briana Andrade-Gomes",
+      "Plot": "When Quinn Ackerman's admission to the college of her dreams depends on her performance at a dance competition, she forms a ragtag group of dancers to take on the best squad in school. Now she just needs to learn how to dance.",
+      "Language": "English",
+      "Country": "United States",
+      "Awards": "1 win total",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BNWQ5ZmFlZWEtYjU4My00NjgyLWFlZmUtZDZkMjEzMzFmNGI4XkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "6.1/10"
+        },
+        {
+          "Source": "Rotten Tomatoes",
+          "Value": "85%"
+        },
+        {
+          "Source": "Metacritic",
+          "Value": "58/100"
+        }
+      ],
+      "Metascore": "58",
+      "imdbRating": "6.1",
+      "imdbVotes": "17,739",
+      "imdbID": "tt10276470",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "N/A",
+      "Production": "N/A",
+      "Website": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:40.051Z"
   },
   "614409": {
     "title": "To All the Boys: Always and Forever",
@@ -22401,6 +24116,52 @@
     },
     "updated_at": "2026-05-25T18:05:22.658Z"
   },
+  "670292": {
+    "title": "The Creator",
+    "year": 2023,
+    "media_type": "movie",
+    "response": {
+      "Title": "The Creator",
+      "Year": "2023",
+      "Rated": "PG-13",
+      "Released": "29 Sep 2023",
+      "Runtime": "133 min",
+      "Genre": "Action, Adventure, Drama",
+      "Director": "Gareth Edwards",
+      "Writer": "Gareth Edwards, Chris Weitz",
+      "Actors": "John David Washington, Madeleine Yuna Voyles, Gemma Chan",
+      "Plot": "Against the backdrop of a war between humans and robots with artificial intelligence, a former soldier finds the robots' secret weapon to end the conflict, an AI in the form of a child.",
+      "Language": "English, Thai",
+      "Country": "United States, Japan, Cambodia",
+      "Awards": "Nominated for 2 Oscars. 13 wins & 49 nominations total",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMDkxMTUxOTQtYzM4Yi00YzA2LTgzOTYtNDg2NTliODE0ZTRjXkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "6.7/10"
+        },
+        {
+          "Source": "Rotten Tomatoes",
+          "Value": "67%"
+        },
+        {
+          "Source": "Metacritic",
+          "Value": "63/100"
+        }
+      ],
+      "Metascore": "63",
+      "imdbRating": "6.7",
+      "imdbVotes": "194,415",
+      "imdbID": "tt11858890",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "$40,774,679",
+      "Production": "N/A",
+      "Website": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:26.721Z"
+  },
   "683022": {
     "title": "Fatal Journey",
     "year": 2020,
@@ -22444,46 +24205,46 @@
     "year": 2026,
     "media_type": "movie",
     "response": {
-      "DVD": "N/A",
-      "Plot": "A science teacher wakes up alone on a spaceship. As his memory returns, he uncovers a mission to stop a mysterious substance killing Earth's sun and that an unexpected friendship may be the key.",
-      "Type": "movie",
-      "Year": "2026",
-      "Genre": "Adventure, Comedy, Sci-Fi",
-      "Rated": "PG-13",
       "Title": "Project Hail Mary",
-      "Actors": "Ryan Gosling, Sandra Hüller, James Ortiz",
-      "Awards": "1 win & 1 nomination total",
-      "Poster": "https://m.media-amazon.com/images/M/MV5BNTkwNzJiYTctNzI3NC00NjE1LTlhYjktY2Q5MTdmMWFmNzcxXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "Year": "2026",
+      "Rated": "PG-13",
+      "Released": "20 Mar 2026",
+      "Runtime": "156 min",
+      "Genre": "Adventure, Comedy, Drama",
+      "Director": "Phil Lord, Christopher Miller",
       "Writer": "Drew Goddard, Andy Weir",
-      "imdbID": "tt12042730",
+      "Actors": "Ryan Gosling, Sandra Hüller, James Ortiz",
+      "Plot": "A science teacher wakes up alone on a spaceship. As his memory returns, he uncovers a mission to stop a mysterious substance killing Earth's sun, and realizes that an unexpected friendship may be the key.",
+      "Language": "English",
       "Country": "United States",
+      "Awards": "1 win & 5 nominations total",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BNTkwNzJiYTctNzI3NC00NjE1LTlhYjktY2Q5MTdmMWFmNzcxXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
       "Ratings": [
         {
-          "Value": "8.4/10",
-          "Source": "Internet Movie Database"
+          "Source": "Internet Movie Database",
+          "Value": "8.3/10"
         },
         {
-          "Value": "94%",
-          "Source": "Rotten Tomatoes"
+          "Source": "Rotten Tomatoes",
+          "Value": "94%"
         },
         {
-          "Value": "77/100",
-          "Source": "Metacritic"
+          "Source": "Metacritic",
+          "Value": "77/100"
         }
       ],
-      "Runtime": "156 min",
-      "Website": "N/A",
-      "Director": "Phil Lord, Christopher Miller",
-      "Language": "English",
-      "Released": "20 Mar 2026",
-      "Response": "True",
-      "BoxOffice": "$260,744,752",
       "Metascore": "77",
-      "imdbVotes": "207,175",
+      "imdbRating": "8.3",
+      "imdbVotes": "333,549",
+      "imdbID": "tt12042730",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "$341,307,287",
       "Production": "N/A",
-      "imdbRating": "8.4"
+      "Website": "N/A",
+      "Response": "True"
     },
-    "updated_at": "2026-05-25T06:50:51.507Z"
+    "updated_at": "2026-06-01T06:51:23.984Z"
   },
   "693134": {
     "title": "Dune: Part Two",
@@ -22740,6 +24501,44 @@
     },
     "updated_at": "2026-05-25T08:59:27.511Z"
   },
+  "740454": {
+    "title": "Slim & I",
+    "year": 2020,
+    "media_type": "movie",
+    "response": {
+      "Title": "Slim & I",
+      "Year": "2020",
+      "Rated": "N/A",
+      "Released": "10 Sep 2020",
+      "Runtime": "107 min",
+      "Genre": "Documentary",
+      "Director": "Kriv Stenders",
+      "Writer": "Kriv Stenders",
+      "Actors": "Glenn A. Baker, Troy Cassar-Daley, Bill Chambers",
+      "Plot": "For over 50 years country music legend Slim Dusty and his wife Joy McKean trail-blazed their way across Australia performing, writing and collecting songs of the bush and its people. They created a musical legacy that to this day ...",
+      "Language": "English",
+      "Country": "Australia",
+      "Awards": "3 nominations",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BNzUxNzEwZWYtMmI1Yy00ZGM4LThiZjktODM1NzgzMzdkZDYwXkEyXkFqcGdeQXVyMjA4OTM3OA@@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.9/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "7.9",
+      "imdbVotes": "44",
+      "imdbID": "tt13085336",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "N/A",
+      "Production": "N/A",
+      "Website": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:32.864Z"
+  },
   "750548": {
     "title": "Micha Wertheim: Live In Toomler",
     "year": 2012,
@@ -22842,6 +24641,63 @@
       "Response": "True"
     },
     "updated_at": "2026-05-25T07:44:58.334Z"
+  },
+  "779151": {
+    "title": "One Day (2011)",
+    "year": 2011,
+    "media_type": "movie",
+    "response": {
+      "Response": "True",
+      "Title": "One Day (2011)",
+      "Year": "2011",
+      "imdbID": "tt1563738",
+      "imdbRating": "7.0",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.0/10"
+        }
+      ]
+    },
+    "updated_at": "2026-06-01T06:50:09.396Z"
+  },
+  "790462": {
+    "title": "I.S.S.",
+    "year": 2024,
+    "media_type": "movie",
+    "response": {
+      "Title": "Doctor Who: Murder on the I.S.S.",
+      "Year": "2024",
+      "Rated": "N/A",
+      "Released": "23 Nov 2024",
+      "Runtime": "5 min",
+      "Genre": "Short, Sci-Fi",
+      "Director": "Ryan Hillman",
+      "Writer": "N/A",
+      "Actors": "Ryan Hillman, Liam Patchett, Miles Taylor",
+      "Plot": "N/A",
+      "Language": "English",
+      "Country": "United Kingdom",
+      "Awards": "N/A",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BZDc4MzQ0MDQtMjVmOC00ODAzLTgxMTEtYzY1ZTA5ZWUyNzQ1XkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "5.3/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "5.3",
+      "imdbVotes": "N/A",
+      "imdbID": "tt35303122",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "N/A",
+      "Production": "N/A",
+      "Website": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:32.297Z"
   },
   "791373": {
     "title": "Zack Snyder's Justice League",
@@ -23500,6 +25356,44 @@
     },
     "updated_at": "2026-05-25T08:25:26.891Z"
   },
+  "843252": {
+    "title": "BanG Dream! Episode of Roselia II: Song I am.",
+    "year": 2021,
+    "media_type": "movie",
+    "response": {
+      "Title": "BanG Dream! Episode of Roselia II: Song I am.",
+      "Year": "2021",
+      "Rated": "N/A",
+      "Released": "25 Jun 2021",
+      "Runtime": "70 min",
+      "Genre": "Animation, Drama, Music",
+      "Director": "Atsushi Mimura, Kôdai Kakimoto",
+      "Writer": "Yuniko Ayana, Kôdai Kakimoto, Kô Nakamura",
+      "Actors": "Aina Aiba, Haruka Kudô, Yuki Nakashima",
+      "Plot": "''It takes the five of us to be \"us.\"'' After overcoming numerous tribulations, the members of Roselia promised to appear on FUTURE WORLD FES. It is now Autumn - Through writing the lyrics of \"Promise,\" Lisa has matured. Watching ...",
+      "Language": "Japanese",
+      "Country": "Japan",
+      "Awards": "N/A",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BOWRkOTZhOTEtZmI0ZC00NjlhLWJhNTgtNzBkZjA0ZDU1ZjU3XkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.8/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "7.8",
+      "imdbVotes": "41",
+      "imdbID": "tt14147078",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "N/A",
+      "Production": "N/A",
+      "Website": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:37.134Z"
+  },
   "844417": {
     "title": "Marlowe",
     "year": 2023,
@@ -23796,6 +25690,25 @@
       "Response": "True"
     },
     "updated_at": "2026-05-25T08:30:12.563Z"
+  },
+  "927159": {
+    "title": "Klaus (2019)",
+    "year": 2020,
+    "media_type": "movie",
+    "response": {
+      "Response": "True",
+      "Title": "Klaus (2019)",
+      "Year": "2020",
+      "imdbID": "tt4729430",
+      "imdbRating": "8.2",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "8.2/10"
+        }
+      ]
+    },
+    "updated_at": "2026-06-01T06:50:08.812Z"
   },
   "931285": {
     "title": "Mortal Kombat II",
@@ -24381,6 +26294,52 @@
     },
     "updated_at": "2026-05-25T08:59:18.322Z"
   },
+  "1079091": {
+    "title": "It Ends with Us",
+    "year": 2024,
+    "media_type": "movie",
+    "response": {
+      "Title": "It Ends with Us",
+      "Year": "2024",
+      "Rated": "PG-13",
+      "Released": "09 Aug 2024",
+      "Runtime": "130 min",
+      "Genre": "Drama, Romance",
+      "Director": "Justin Baldoni",
+      "Writer": "Christy Hall, Colleen Hoover",
+      "Actors": "Blake Lively, Justin Baldoni, Jenny Slate",
+      "Plot": "When a woman's first love suddenly reenters her life, her relationship with a charming, but abusive neurosurgeon is upended and she realizes she must learn to rely on her own strength to make an impossible choice for her future.",
+      "Language": "English",
+      "Country": "United States",
+      "Awards": "1 win & 5 nominations total",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BYzM2NGMzNGQtZjNhMi00MTVkLTg2ZGQtN2M4OTllYzU1Y2Y0XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "6.3/10"
+        },
+        {
+          "Source": "Rotten Tomatoes",
+          "Value": "55%"
+        },
+        {
+          "Source": "Metacritic",
+          "Value": "53/100"
+        }
+      ],
+      "Metascore": "53",
+      "imdbRating": "6.3",
+      "imdbVotes": "100,886",
+      "imdbID": "tt10655524",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "$148,518,266",
+      "Production": "N/A",
+      "Website": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:36.647Z"
+  },
   "1083381": {
     "title": "Backrooms",
     "year": 2026,
@@ -24601,6 +26560,48 @@
       "Response": "True"
     },
     "updated_at": "2026-05-25T18:05:25.660Z"
+  },
+  "1116201": {
+    "title": "Iron Lung",
+    "year": 2026,
+    "media_type": "movie",
+    "response": {
+      "DVD": "N/A",
+      "Plot": "In a post-apocalyptic future after \"The Quiet Rapture\" event, a convict explores a blood ocean on a desolate moon using a submarine called the \"Iron Lung\" to search for missing stars/planets.",
+      "Type": "movie",
+      "Year": "2026",
+      "Genre": "Horror, Sci-Fi",
+      "Rated": "R",
+      "Title": "Iron Lung",
+      "Actors": "Mark Fischbach, Caroline Kaplan, Troy Baker",
+      "Awards": "N/A",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BYzkxOGU1YmQtNDc0Ni00M2JhLWFlZjktODMzOGU3MjQxMTQ0XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "Writer": "Mark Fischbach, David Szymanski",
+      "imdbID": "tt27564844",
+      "Country": "United States",
+      "Ratings": [
+        {
+          "Value": "6.5/10",
+          "Source": "Internet Movie Database"
+        },
+        {
+          "Value": "54/100",
+          "Source": "Metacritic"
+        }
+      ],
+      "Runtime": "125 min",
+      "Website": "N/A",
+      "Director": "Mark Fischbach",
+      "Language": "English",
+      "Released": "30 Jan 2026",
+      "Response": "True",
+      "BoxOffice": "$40,851,941",
+      "Metascore": "54",
+      "imdbVotes": "19,668",
+      "Production": "N/A",
+      "imdbRating": "6.5"
+    },
+    "updated_at": "2026-06-01T06:37:37.936Z"
   },
   "1119575": {
     "title": "Tokyo MER: The Sumida River Mission",
@@ -24833,6 +26834,52 @@
       "Response": "True"
     },
     "updated_at": "2026-05-25T16:56:45.382Z"
+  },
+  "1145221": {
+    "title": "It Feeds",
+    "year": 2025,
+    "media_type": "movie",
+    "response": {
+      "Title": "It Feeds",
+      "Year": "2025",
+      "Rated": "N/A",
+      "Released": "18 Apr 2025",
+      "Runtime": "102 min",
+      "Genre": "Horror",
+      "Director": "Chad Archibald",
+      "Writer": "Chad Archibald",
+      "Actors": "Ashley Greene, Ellie O'Brien, Shawn Ashmore",
+      "Plot": "After a young girl bursts into their home psychiatry practice claiming an entity is feeding on her, Jordan and her clairvoyant mother must find a way to stop the force before the girl is taken completely.",
+      "Language": "English",
+      "Country": "Canada",
+      "Awards": "N/A",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BM2YwY2U1ZmYtNjI1Yy00MDY2LTk1MzMtYmVjMDU2OWQzOThkXkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "5.6/10"
+        },
+        {
+          "Source": "Rotten Tomatoes",
+          "Value": "89%"
+        },
+        {
+          "Source": "Metacritic",
+          "Value": "66/100"
+        }
+      ],
+      "Metascore": "66",
+      "imdbRating": "5.6",
+      "imdbVotes": "1,514",
+      "imdbID": "tt28230296",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "N/A",
+      "Production": "N/A",
+      "Website": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:36.108Z"
   },
   "1149947": {
     "title": "To End All War: Oppenheimer & the Atomic Bomb",
@@ -25249,6 +27296,25 @@
     },
     "updated_at": "2026-05-25T16:56:45.039Z"
   },
+  "1195613": {
+    "title": "Doin' It",
+    "year": 2025,
+    "media_type": "movie",
+    "response": {
+      "Response": "True",
+      "Title": "Doin' It",
+      "Year": "2025",
+      "imdbID": "tt26853872",
+      "imdbRating": "4.7",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "4.7/10"
+        }
+      ]
+    },
+    "updated_at": "2026-06-01T07:01:30.505Z"
+  },
   "1203865": {
     "title": "R&R",
     "year": 2019,
@@ -25380,42 +27446,84 @@
     "year": 2026,
     "media_type": "movie",
     "response": {
-      "DVD": "N/A",
-      "Plot": "Mario ventures into space, exploring cosmic worlds and tackling galactic challenges far from the familiar Mushroom Kingdom.",
-      "Type": "movie",
-      "Year": "2026",
-      "Genre": "Animation, Adventure, Comedy",
-      "Rated": "PG",
       "Title": "The Super Mario Galaxy Movie",
-      "Actors": "Brie Larson, Virginia Dare Jelenic, Benny Safdie",
-      "Awards": "N/A",
-      "Poster": "https://m.media-amazon.com/images/M/MV5BMDg5MjRkNWEtYmU1Mi00MTExLTk5MDQtY2RiMWVkZWNiOThjXkEyXkFqcGc@._V1_QL75_UX380_CR0,20,380,562_.jpg",
+      "Year": "2026",
+      "Rated": "PG",
+      "Released": "01 Apr 2026",
+      "Runtime": "98 min",
+      "Genre": "Animation, Adventure, Comedy",
+      "Director": "Aaron Horvath, Michael Jelenic, Pierre Leduc",
       "Writer": "Matthew Fogel",
-      "imdbID": "tt28650488",
+      "Actors": "Brie Larson, Virginia Dare Jelenic, Benny Safdie",
+      "Plot": "Mario ventures into space, exploring cosmic worlds and tackling galactic challenges far from the familiar Mushroom Kingdom.",
+      "Language": "English",
       "Country": "Japan, United States",
+      "Awards": "N/A",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BYWYxYWRkMTUtMGMwZC00MzYyLThlNjEtNDcwMDYyMTQ4ZjJlXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
       "Ratings": [
         {
-          "Value": "6.4/10",
-          "Source": "Internet Movie Database"
+          "Source": "Internet Movie Database",
+          "Value": "6.3/10"
         },
         {
-          "Value": "37/100",
-          "Source": "Metacritic"
+          "Source": "Metacritic",
+          "Value": "37/100"
         }
       ],
-      "Runtime": "98 min",
-      "Website": "N/A",
-      "Director": "Aaron Horvath, Michael Jelenic, Pierre Leduc",
-      "Language": "English",
-      "Released": "01 Apr 2026",
-      "Response": "True",
-      "BoxOffice": "$314,905,415",
       "Metascore": "37",
-      "imdbVotes": "33,056",
+      "imdbRating": "6.3",
+      "imdbVotes": "55,972",
+      "imdbID": "tt28650488",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "$427,096,185",
       "Production": "N/A",
-      "imdbRating": "6.4"
+      "Website": "N/A",
+      "Response": "True"
     },
-    "updated_at": "2026-05-25T06:50:51.257Z"
+    "updated_at": "2026-06-01T06:51:24.014Z"
+  },
+  "1227877": {
+    "title": "I Love Boosters",
+    "year": 2026,
+    "media_type": "movie",
+    "response": {
+      "Title": "I Love Boosters",
+      "Year": "2026",
+      "Rated": "R",
+      "Released": "22 May 2026",
+      "Runtime": "105 min",
+      "Genre": "Adventure, Comedy, Crime",
+      "Director": "Boots Riley",
+      "Writer": "Boots Riley",
+      "Actors": "Keke Palmer, LaKeith Stanfield, Mahdi Cocci",
+      "Plot": "A group of shoplifters take aim at a cutthroat fashion maven by stealing her clothes and reselling them at a lower price, what they call \"fashion-forward philanthropy.\"",
+      "Language": "English, Mandarin",
+      "Country": "United States",
+      "Awards": "1 nomination total",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BODQwZDU4ZmQtOWE4Yy00ZWZmLTgzZjItNWUxOThmMzcxM2FiXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "5.4/10"
+        },
+        {
+          "Source": "Metacritic",
+          "Value": "72/100"
+        }
+      ],
+      "Metascore": "72",
+      "imdbRating": "5.4",
+      "imdbVotes": "379",
+      "imdbID": "tt30827810",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "N/A",
+      "Production": "N/A",
+      "Website": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:25.614Z"
   },
   "1228710": {
     "title": "Star Wars: The Mandalorian and Grogu",
@@ -25593,6 +27701,44 @@
     },
     "updated_at": "2026-05-25T06:50:51.516Z"
   },
+  "1242432": {
+    "title": "If It Bleeds",
+    "year": 2025,
+    "media_type": "movie",
+    "response": {
+      "Title": "If It Bleeds",
+      "Year": "2025",
+      "Rated": "N/A",
+      "Released": "17 Oct 2025",
+      "Runtime": "98 min",
+      "Genre": "Horror",
+      "Director": "N/A",
+      "Writer": "N/A",
+      "Actors": "N/A",
+      "Plot": "Follows the story of Diane Winters, a young and ambitious news reporter, and her skilled cameraman Simon, as they delve into a series of gruesome murders that unfold throughout a chaotic and violent day.",
+      "Language": "English",
+      "Country": "United States",
+      "Awards": "N/A",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BZTlkNGQ5MzgtNDEyYy00ODBlLTgzMDMtMDRlOTkyMWM4NzBhXkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "6.9/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "6.9",
+      "imdbVotes": "N/A",
+      "imdbID": "tt27529307",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "N/A",
+      "Production": "N/A",
+      "Website": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T07:01:28.440Z"
+  },
   "1243157": {
     "title": "Innovations in Film: 65mm Black and White Film in Oppenheimer",
     "year": 2023,
@@ -25733,6 +27879,25 @@
       "Response": "True"
     },
     "updated_at": "2026-05-25T07:18:03.775Z"
+  },
+  "1266127": {
+    "title": "Ready or Not: Here I Come",
+    "year": 2026,
+    "media_type": "movie",
+    "response": {
+      "Response": "True",
+      "Title": "Ready or Not: Here I Come",
+      "Year": "2026",
+      "imdbID": "tt33978029",
+      "imdbRating": "6.5",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "6.5/10"
+        }
+      ]
+    },
+    "updated_at": "2026-06-01T06:51:31.958Z"
   },
   "1268127": {
     "title": "Humint",
@@ -26021,42 +28186,61 @@
     "year": 2026,
     "media_type": "movie",
     "response": {
-      "DVD": "N/A",
-      "Plot": "The young daughter of a journalist disappears into the desert without a trace. Eight years later, the broken family is shocked when she is returned to them, as what should be a joyful reunion turns into a living nightmare.",
-      "Type": "movie",
+      "Title": "Lee Cronin's The Mummy",
       "Year": "2026",
-      "Genre": "Horror",
       "Rated": "R",
-      "Title": "Lee Cronin's the Mummy",
+      "Released": "17 Apr 2026",
+      "Runtime": "134 min",
+      "Genre": "Horror",
+      "Director": "Lee Cronin",
+      "Writer": "Lee Cronin",
       "Actors": "Jack Reynor, Laia Costa, May Calamawy",
+      "Plot": "The young daughter of a journalist disappears into the desert without a trace. Eight years later, the broken family is shocked when she is returned to them, as what should be a joyful reunion turns into a living nightmare.",
+      "Language": "English, Spanish, Arabic",
+      "Country": "Ireland, United States, Spain, Canada",
       "Awards": "N/A",
       "Poster": "https://m.media-amazon.com/images/M/MV5BNWQ1NzI2YTUtN2E0ZS00YzVmLTkxNjktMWIzNTYwMzkyOTU0XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
-      "Writer": "Lee Cronin",
-      "imdbID": "tt32612507",
-      "Country": "Ireland, United States",
       "Ratings": [
         {
-          "Value": "6.5/10",
-          "Source": "Internet Movie Database"
+          "Source": "Internet Movie Database",
+          "Value": "6.2/10"
         },
         {
-          "Value": "48/100",
-          "Source": "Metacritic"
+          "Source": "Metacritic",
+          "Value": "47/100"
         }
       ],
-      "Runtime": "133 min",
-      "Website": "N/A",
-      "Director": "Lee Cronin",
-      "Language": "English, Spanish, Arabic",
-      "Released": "17 Apr 2026",
-      "Response": "True",
-      "BoxOffice": "N/A",
-      "Metascore": "48",
-      "imdbVotes": "804",
+      "Metascore": "47",
+      "imdbRating": "6.2",
+      "imdbVotes": "33,540",
+      "imdbID": "tt32612507",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "$29,152,113",
       "Production": "N/A",
-      "imdbRating": "6.5"
+      "Website": "N/A",
+      "Response": "True"
     },
-    "updated_at": "2026-05-25T06:50:51.222Z"
+    "updated_at": "2026-06-01T06:51:23.964Z"
+  },
+  "1306293": {
+    "title": "It Takes Two To Tango",
+    "year": 2025,
+    "media_type": "movie",
+    "response": {
+      "Response": "True",
+      "Title": "It Takes Two To Tango",
+      "Year": "2025",
+      "imdbID": "tt33064446",
+      "imdbRating": "8.1",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "8.1/10"
+        }
+      ]
+    },
+    "updated_at": "2026-06-01T06:51:42.096Z"
   },
   "1311071": {
     "title": "Micha denkt groß",
@@ -26137,6 +28321,44 @@
       "imdbRating": "7.0"
     },
     "updated_at": "2026-05-25T06:50:51.553Z"
+  },
+  "1317149": {
+    "title": "I Swear",
+    "year": 2025,
+    "media_type": "movie",
+    "response": {
+      "Title": "I Swear to God I'm not Crazy",
+      "Year": "2025",
+      "Rated": "N/A",
+      "Released": "29 Jan 2025",
+      "Runtime": "N/A",
+      "Genre": "Comedy, Short",
+      "Director": "Jessica Ryan",
+      "Writer": "Jessica Ryan",
+      "Actors": "Jessica Ryan",
+      "Plot": "A girl sends a sexually explicit DM to her celebrity crush.",
+      "Language": "English",
+      "Country": "Canada",
+      "Awards": "N/A",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BZmYzMWY5ZDktNjU5Yy00OGU2LWE3Y2EtMjdlNzBkMGM0MzgxXkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "8.4/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "8.4",
+      "imdbVotes": "N/A",
+      "imdbID": "tt35410444",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "N/A",
+      "Production": "N/A",
+      "Website": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:32.920Z"
   },
   "1318417": {
     "title": "A Place for Her",
@@ -26251,6 +28473,25 @@
       ]
     },
     "updated_at": "2026-05-25T08:28:30.887Z"
+  },
+  "1324241": {
+    "title": "Let It Rain",
+    "year": 2025,
+    "media_type": "movie",
+    "response": {
+      "Response": "True",
+      "Title": "Let It Rain",
+      "Year": "2025",
+      "imdbID": "tt34250056",
+      "imdbRating": "4.9",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "4.9/10"
+        }
+      ]
+    },
+    "updated_at": "2026-06-01T07:01:22.833Z"
   },
   "1325734": {
     "title": "The Drama",
@@ -26425,46 +28666,46 @@
     "year": 2026,
     "media_type": "movie",
     "response": {
-      "DVD": "N/A",
-      "Plot": "After breaking the mysterious \"One Wish Willow\" to win his crush's heart, a hopeless romantic finds himself getting exactly what he asked for but soon discovers that some desires come at a dark, sinister price.",
-      "Type": "movie",
-      "Year": "2026",
-      "Genre": "Horror, Thriller",
-      "Rated": "R",
       "Title": "Obsession",
-      "Actors": "Michael Johnston, Inde Navarrette, Cooper Tomlinson",
-      "Awards": "3 wins & 4 nominations total",
-      "Poster": "https://m.media-amazon.com/images/M/MV5BYzc1NWUwMDgtNGZlMS00ZmYzLWIzMzktNmMxMmY1MTUzNWExXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "Year": "2026",
+      "Rated": "R",
+      "Released": "15 May 2026",
+      "Runtime": "108 min",
+      "Genre": "Horror, Romance, Thriller",
+      "Director": "Curry Barker",
       "Writer": "Curry Barker",
-      "imdbID": "tt37287335",
+      "Actors": "Michael Johnston, Inde Navarrette, Cooper Tomlinson",
+      "Plot": "After breaking the mysterious \"One Wish Willow\" to win his crush's heart, a hopeless romantic finds himself getting exactly what he asked for but soon discovers that some desires come at a dark, sinister price.",
+      "Language": "English",
       "Country": "United States",
+      "Awards": "5 wins & 4 nominations total",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BYzc1NWUwMDgtNGZlMS00ZmYzLWIzMzktNmMxMmY1MTUzNWExXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
       "Ratings": [
         {
-          "Value": "7.6/10",
-          "Source": "Internet Movie Database"
+          "Source": "Internet Movie Database",
+          "Value": "8.2/10"
         },
         {
-          "Value": "95%",
-          "Source": "Rotten Tomatoes"
+          "Source": "Rotten Tomatoes",
+          "Value": "95%"
         },
         {
-          "Value": "78/100",
-          "Source": "Metacritic"
+          "Source": "Metacritic",
+          "Value": "77/100"
         }
       ],
-      "Runtime": "108 min",
-      "Website": "N/A",
-      "Director": "Curry Barker",
-      "Language": "English",
-      "Released": "15 May 2026",
-      "Response": "True",
-      "BoxOffice": "N/A",
-      "Metascore": "78",
-      "imdbVotes": "694",
+      "Metascore": "77",
+      "imdbRating": "8.2",
+      "imdbVotes": "50,183",
+      "imdbID": "tt37287335",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "$104,757,650",
       "Production": "N/A",
-      "imdbRating": "7.6"
+      "Website": "N/A",
+      "Response": "True"
     },
-    "updated_at": "2026-05-25T06:50:51.253Z"
+    "updated_at": "2026-06-01T06:51:24.049Z"
   },
   "1352417": {
     "title": "舞台　ライブ・ファンタジー　ＦＡＩＲＹ　ＴＡＩＬ",
@@ -26759,6 +29000,44 @@
     },
     "updated_at": "2026-06-01T05:36:55.132Z"
   },
+  "1371202": {
+    "title": "iHostage",
+    "year": 2025,
+    "media_type": "movie",
+    "response": {
+      "Title": "iHostage",
+      "Year": "2025",
+      "Rated": "TV-MA",
+      "Released": "18 Apr 2025",
+      "Runtime": "100 min",
+      "Genre": "Crime, Drama, Thriller",
+      "Director": "Bobby Boermans",
+      "Writer": "Anne Barnhoorn, Simon de Waal",
+      "Actors": "Soufiane Moussouli, Admir Sehovic, Emmanuel Ohene Boafo",
+      "Plot": "When a gunman enters an Apple Store in the heart of Amsterdam, the police face a delicate challenge to resolve the standoff. Based on true events.",
+      "Language": "Dutch, English",
+      "Country": "Netherlands, Belgium",
+      "Awards": "N/A",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMGEyNWI4NjctY2NkYS00ZDY0LTkyNTUtOGRhM2UzNWYxOTc2XkEyXkFqcGc@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "5.7/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "5.7",
+      "imdbVotes": "13,134",
+      "imdbID": "tt31181421",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "N/A",
+      "Production": "N/A",
+      "Website": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T06:51:26.171Z"
+  },
   "1375646": {
     "title": "Colony",
     "year": 2026,
@@ -26918,6 +29197,25 @@
       "Response": "True"
     },
     "updated_at": "2026-05-25T08:28:30.596Z"
+  },
+  "1399436": {
+    "title": "Roughing It",
+    "year": 2025,
+    "media_type": "movie",
+    "response": {
+      "Response": "True",
+      "Title": "Roughing It",
+      "Year": "2025",
+      "imdbID": "",
+      "imdbRating": "0.0",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "0.0/10"
+        }
+      ]
+    },
+    "updated_at": "2026-06-01T07:01:29.355Z"
   },
   "1405769": {
     "title": "I Can Only Imagine 2",
@@ -27235,6 +29533,71 @@
     },
     "updated_at": "2026-05-25T08:12:34.930Z"
   },
+  "1456349": {
+    "title": "It Was Just an Accident",
+    "year": 2025,
+    "media_type": "movie",
+    "response": {
+      "Title": "It Was Just an Accident",
+      "Year": "2025",
+      "Rated": "PG-13",
+      "Released": "15 Oct 2025",
+      "Runtime": "103 min",
+      "Genre": "Crime, Drama, Mystery",
+      "Director": "Jafar Panahi",
+      "Writer": "Jafar Panahi, Nader Saeivar, Shadmehr Rastin",
+      "Actors": "Vahid Mobasseri, Mariam Afshari, Ebrahim Azizi",
+      "Plot": "An unassuming mechanic is reminded of his time in an Iranian prison when he encounters a man he suspects to be his sadistic jailhouse captor. Panicked, he rounds up a few of his fellow ex-prisoners to confirm the man's identity.",
+      "Language": "Persian, Azerbaijani",
+      "Country": "Iran, France, Luxembourg, United States",
+      "Awards": "Nominated for 2 Oscars. 41 wins & 131 nominations total",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMWJkZmZlNjUtM2Q1OC00MmNjLWFkOWEtNjRhN2FkM2ZlMjI3XkEyXkFqcGc@._V1_QL75_UY562_CR0,0,380,562_.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.4/10"
+        },
+        {
+          "Source": "Rotten Tomatoes",
+          "Value": "98%"
+        },
+        {
+          "Source": "Metacritic",
+          "Value": "91/100"
+        }
+      ],
+      "Metascore": "91",
+      "imdbRating": "7.4",
+      "imdbVotes": "32,949",
+      "imdbID": "tt36491653",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "$1,773,664",
+      "Production": "N/A",
+      "Website": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T07:01:23.935Z"
+  },
+  "1456928": {
+    "title": "I Would Rather Kill You",
+    "year": 2025,
+    "media_type": "movie",
+    "response": {
+      "Response": "True",
+      "Title": "I Would Rather Kill You",
+      "Year": "2025",
+      "imdbID": "tt37271308",
+      "imdbRating": "5.1",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "5.1/10"
+        }
+      ]
+    },
+    "updated_at": "2026-06-01T06:51:31.572Z"
+  },
   "1466115": {
     "title": "Even If This Love Disappears Tonight",
     "year": 2025,
@@ -27272,6 +29635,63 @@
       ]
     },
     "updated_at": "2026-05-25T08:59:11.201Z"
+  },
+  "1502523": {
+    "title": "Parasite (2019)",
+    "year": 2023,
+    "media_type": "movie",
+    "response": {
+      "Response": "True",
+      "Title": "Parasite (2019)",
+      "Year": "2023",
+      "imdbID": "",
+      "imdbRating": "10",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "10/10"
+        }
+      ]
+    },
+    "updated_at": "2026-06-01T06:50:15.981Z"
+  },
+  "1516445": {
+    "title": "It Would Be Night in Caracas",
+    "year": 2025,
+    "media_type": "movie",
+    "response": {
+      "Title": "It Would Be Night in Caracas",
+      "Year": "2025",
+      "Rated": "N/A",
+      "Released": "04 Sep 2025",
+      "Runtime": "97 min",
+      "Genre": "Action, Adventure, Drama",
+      "Director": "Mariana Rondón, Marité Ugas",
+      "Writer": "Mariana Rondón, Marité Ugas",
+      "Actors": "Edgar Ramírez, Natalia Reyes, Diana Noris Smith",
+      "Plot": "In crumbling Caracas, after burying her mother, Adelaida finds her home taken by armed militia. With society falling apart, she must risk all, including her identity, to survive.",
+      "Language": "Spanish",
+      "Country": "Mexico, Venezuela",
+      "Awards": "N/A",
+      "Poster": "N/A",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "6.3/10"
+        }
+      ],
+      "Metascore": "N/A",
+      "imdbRating": "6.3",
+      "imdbVotes": "N/A",
+      "imdbID": "tt37656135",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "N/A",
+      "Production": "N/A",
+      "Website": "N/A",
+      "Response": "True"
+    },
+    "updated_at": "2026-06-01T07:01:23.059Z"
   },
   "1520408": {
     "title": "Oppenheimer, la véritable histoire de la bombe atomique.",
@@ -27520,43 +29940,62 @@
     },
     "updated_at": "2026-05-25T07:48:30.009Z"
   },
+  "1580901": {
+    "title": "Spit It Out",
+    "year": 2025,
+    "media_type": "movie",
+    "response": {
+      "Response": "True",
+      "Title": "Spit It Out",
+      "Year": "2025",
+      "imdbID": "tt30767345",
+      "imdbRating": "7.6",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "7.6/10"
+        }
+      ]
+    },
+    "updated_at": "2026-06-01T07:01:30.111Z"
+  },
   "1582770": {
     "title": "Dhurandhar: The Revenge",
     "year": 2026,
     "media_type": "movie",
     "response": {
-      "DVD": "N/A",
-      "Plot": "Jaskirat Singh Rangi descends deeper into his alias as Hamza Ali Mazari, rising through Karachi's criminal hierarchy to claim the feared title \"Sher-e-Baloch\" while balancing loyalty, betrayal, and survival in a ruthless underworld.",
-      "Type": "movie",
-      "Year": "2026",
-      "Genre": "Action, Crime, Thriller",
-      "Rated": "N/A",
       "Title": "Dhurandhar The Revenge",
+      "Year": "2026",
+      "Rated": "N/A",
+      "Released": "19 Mar 2026",
+      "Runtime": "230 min",
+      "Genre": "Action, Crime, Thriller",
+      "Director": "Aditya Dhar",
+      "Writer": "Aditya Dhar",
       "Actors": "Ranveer Singh, Akshaye Khanna, Sanjay Dutt",
+      "Plot": "Jaskirat Singh Rangi descends deeper into his alias as Hamza Ali Mazari, rising through Karachi's criminal hierarchy to claim the feared title \"Sher-e-Baloch\" while balancing loyalty, betrayal, and survival in a ruthless underworld.",
+      "Language": "Hindi",
+      "Country": "India",
       "Awards": "N/A",
       "Poster": "https://m.media-amazon.com/images/M/MV5BNzdkNjAxNWMtNWY3My00NTI1LTg2YWQtOGI3MDA0NzdhMjEyXkEyXkFqcGc@._V1_QL75_UY562_CR24,0,380,562_.jpg",
-      "Writer": "Aditya Dhar",
-      "imdbID": "tt39139925",
-      "Country": "India",
       "Ratings": [
         {
-          "Value": "8.5/10",
-          "Source": "Internet Movie Database"
+          "Source": "Internet Movie Database",
+          "Value": "8.5/10"
         }
       ],
-      "Runtime": "230 min",
-      "Website": "N/A",
-      "Director": "Aditya Dhar",
-      "Language": "Hindi",
-      "Released": "19 Mar 2026",
-      "Response": "True",
-      "BoxOffice": "$27,415,192",
       "Metascore": "N/A",
+      "imdbRating": "8.5",
       "imdbVotes": "45,701",
+      "imdbID": "tt39139925",
+      "Type": "movie",
+      "DVD": "N/A",
+      "BoxOffice": "$27,415,192",
       "Production": "N/A",
-      "imdbRating": "8.5"
+      "Website": "N/A",
+      "Response": "True"
     },
-    "updated_at": "2026-05-25T06:50:51.671Z"
+    "updated_at": "2026-06-01T06:51:24.035Z"
   },
   "1591834": {
     "title": "Familia a la deriva",
@@ -27614,6 +30053,25 @@
       ]
     },
     "updated_at": "2026-05-25T08:19:45.307Z"
+  },
+  "1599233": {
+    "title": "Boss It",
+    "year": 2025,
+    "media_type": "movie",
+    "response": {
+      "Response": "True",
+      "Title": "Boss It",
+      "Year": "2025",
+      "imdbID": "tt42992774",
+      "imdbRating": "6.9",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "6.9/10"
+        }
+      ]
+    },
+    "updated_at": "2026-06-01T07:01:21.804Z"
   },
   "1599251": {
     "title": "Micha Wertheim: Nergens Anders",

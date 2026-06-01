@@ -111,19 +111,27 @@ function normalizeMovie(movie: any): TMDBMovie {
 
 // ─── Internal search helpers (một ngôn ngữ) ────────────────────────────────────
 
-async function searchMovieLang(query: string, lang: string): Promise<TMDBMovie[]> {
+async function searchMovieLang(query: string, lang: string, year?: number | null): Promise<TMDBMovie[]> {
+  const params: Record<string, string> = { query, include_adult: "false" };
+  if (year) {
+    params["primary_release_year"] = String(year);
+  }
   const data = await tmdbFetch<TMDBSearchResult>(
     "/search/movie",
-    { query, include_adult: "false" },
+    params,
     lang
   ).catch(() => ({ results: [] } as TMDBSearchResult));
   return data.results.map(normalizeMovie);
 }
 
-async function searchTVLang(query: string, lang: string): Promise<TMDBMovie[]> {
+async function searchTVLang(query: string, lang: string, year?: number | null): Promise<TMDBMovie[]> {
+  const params: Record<string, string> = { query, include_adult: "false" };
+  if (year) {
+    params["first_air_date_year"] = String(year);
+  }
   const data = await tmdbFetch<{ results: any[] }>(
     "/search/tv",
-    { query, include_adult: "false" },
+    params,
     lang
   ).catch(() => ({ results: [] }));
   return data.results.map(normalizeTV);
@@ -271,19 +279,29 @@ export async function searchMovies(query: string): Promise<TMDBMovie[]> {
 
   const q = query.trim();
 
+  // Trích xuất năm phát hành (4 chữ số từ 1900 đến 2099)
+  const yearMatch = q.match(/\b(19\d\d|20\d\d)\b/);
+  const year = yearMatch ? parseInt(yearMatch[0], 10) : null;
+  const cleanQuery = yearMatch 
+    ? q.replace(yearMatch[0], "").replace(/\s+/g, " ").trim() 
+    : q;
+
+  // Nếu trích xuất năm xong mà query trống (ví dụ user chỉ gõ "2025"), ta dùng lại query gốc
+  const finalQuery = cleanQuery || q;
+
   // 8 requests song song
   const [
     mvEn, mvVi, mvZhCN, mvZhTW,
     tvEn, tvVi, tvZhCN, tvZhTW,
   ] = await Promise.all([
-    searchMovieLang(q, "en-US"),
-    searchMovieLang(q, "vi-VN"),
-    searchMovieLang(q, "zh-CN"),
-    searchMovieLang(q, "zh-TW"),
-    searchTVLang(q, "en-US"),
-    searchTVLang(q, "vi-VN"),
-    searchTVLang(q, "zh-CN"),
-    searchTVLang(q, "zh-TW"),
+    searchMovieLang(finalQuery, "en-US", year),
+    searchMovieLang(finalQuery, "vi-VN", year),
+    searchMovieLang(finalQuery, "zh-CN", year),
+    searchMovieLang(finalQuery, "zh-TW", year),
+    searchTVLang(finalQuery, "en-US", year),
+    searchTVLang(finalQuery, "vi-VN", year),
+    searchTVLang(finalQuery, "zh-CN", year),
+    searchTVLang(finalQuery, "zh-TW", year),
   ]);
 
   // Merge + deduplicate bằng key `{media_type}-{id}`

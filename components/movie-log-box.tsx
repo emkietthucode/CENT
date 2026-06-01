@@ -74,6 +74,17 @@ function LogBoxStar({ rating, onRatingChange }: LogBoxStarProps) {
   );
 }
 
+// Helper to get release year of a specific season
+function getSeasonReleaseYear(seasonsList: any[] | undefined, seasonNumber: number | null, fallbackYear: number | null): number | null {
+  if (!seasonsList || seasonNumber === null) return fallbackYear;
+  const season = seasonsList.find((s: any) => s.season_number === seasonNumber);
+  if (season && season.air_date) {
+    const y = parseInt(season.air_date.substring(0, 4));
+    return isNaN(y) ? fallbackYear : y;
+  }
+  return fallbackYear;
+}
+
 // ─── Types ────────────────────────────────────────────────────────────────────
 interface MovieLogBoxProps {
   tmdbId: number;
@@ -83,6 +94,7 @@ interface MovieLogBoxProps {
   posterPath: string | null;
   director: string;
   numberOfSeasons?: number; // Nhận số lượng seasons
+  seasons?: any[]; // Danh sách seasons để lấy ngày phát hành
 }
 
 // ─── Main Log Box Component ───────────────────────────────────────────────────
@@ -93,7 +105,8 @@ export function MovieLogBox({
   year, 
   posterPath, 
   director,
-  numberOfSeasons = 0 
+  numberOfSeasons = 0,
+  seasons = []
 }: MovieLogBoxProps) {
   const [rating, setRating] = useState(0);
   const [liked, setLiked] = useState(false);
@@ -159,6 +172,10 @@ export function MovieLogBox({
         ? `${title} — Season ${selectedSeason}`
         : title;
 
+      const finalYear = (mediaType === "tv" && numberOfSeasons > 1 && selectedSeason !== null)
+        ? getSeasonReleaseYear(seasons, selectedSeason, year)
+        : year;
+
       if (existingId) {
         await supabase
           .from("diary_entries")
@@ -166,7 +183,8 @@ export function MovieLogBox({
             rating: newRating, 
             liked: newLiked, 
             watched_on: today,
-            title: finalTitle
+            title: finalTitle,
+            year: finalYear
           })
           .eq("id", existingId)
           .eq("user_id", STATIC_USER_ID);
@@ -176,7 +194,7 @@ export function MovieLogBox({
           tmdb_id: tmdbId,
           media_type: mediaType,
           title: finalTitle,
-          year,
+          year: finalYear,
           poster_path: posterPath,
           director,
           watched_on: today,

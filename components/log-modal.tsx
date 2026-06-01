@@ -17,6 +17,17 @@ function formatDate(date: Date): string {
   return `${date.getDate()} ${MONTHS[date.getMonth()]} ${date.getFullYear()}`;
 }
 
+// Helper to get release year of a specific season
+function getSeasonReleaseYear(seasonsList: any[] | undefined, seasonNumber: number | null, fallbackYear: number | null): number | null {
+  if (!seasonsList || seasonNumber === null) return fallbackYear;
+  const season = seasonsList.find((s: any) => s.season_number === seasonNumber);
+  if (season && season.air_date) {
+    const y = parseInt(season.air_date.substring(0, 4));
+    return isNaN(y) ? fallbackYear : y;
+  }
+  return fallbackYear;
+}
+
 // ─── Half-star Rating Component ───────────────────────────────────────────────
 // Hỗ trợ 0.5 step: click/hover nửa trái star = X.5, nửa phải = X
 // Dùng SVG clip-path để vẽ nửa sao
@@ -114,6 +125,9 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
   const [saving, setSaving] = useState(false);
   const [deleting, setDeleting] = useState(false);
 
+  // State quản lý season chọn (TV series nhiều season)
+  const [selectedSeason, setSelectedSeason] = useState<number | null>(null);
+
   const [mounted, setMounted] = useState(false);
 
   // Set ngày tháng chỉ phía client (fix hydration mismatch)
@@ -122,13 +136,16 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
     if (!watchedOn) setWatchedOn(formatDate(new Date()));
   }, []);
 
+  const isTV = (selectedMovie as any)?.media_type === "tv";
+  const numSeasons = selectedMovie?.number_of_seasons ?? 0;
+
   // Pre-fill form when editEntry is provided
   useEffect(() => {
     if (open) {
       if (editEntry) {
         setSelectedMovie({
           id: editEntry.tmdb_id,
-          title: editEntry.title,
+          title: editEntry.title.split(" — Season")[0], // Lấy title gốc không suffix
           release_date: editEntry.year ? `${editEntry.year}-01-01` : "",
           poster_path: editEntry.poster_path,
           media_type: editEntry.media_type,
@@ -143,12 +160,54 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
         setTags(editEntry.tags ? editEntry.tags.join(", ") : "");
         setRating(editEntry.rating);
         setLiked(editEntry.liked);
+        setSelectedSeason(editEntry.season_number ?? null);
         setStep(2);
       } else {
         resetForm();
       }
     }
   }, [open, editEntry]);
+
+  // Tự động gán selectedSeason mặc định là 1 khi chọn TV series nhiều season ở Step 2
+  useEffect(() => {
+    if (selectedMovie && isTV && numSeasons > 1 && !editEntry) {
+      setSelectedSeason(1);
+    } else if (!isTV || numSeasons <= 1) {
+      setSelectedSeason(null);
+    }
+  }, [selectedMovie, isTV, numSeasons, editEntry]);
+
+  // Tự động tải dữ liệu cũ của Season khi user chuyển đổi season trong LogModal (chỉ ở chế độ add mới)
+  useEffect(() => {
+    if (selectedMovie && isTV && numSeasons > 1 && selectedSeason !== null && !editEntry) {
+      async function loadSeasonData() {
+        const { data, error } = await supabase
+          .from("diary_entries")
+          .select("*")
+          .eq("user_id", STATIC_USER_ID)
+          .eq("tmdb_id", selectedMovie.id)
+          .eq("season_number", selectedSeason)
+          .maybeSingle();
+
+        if (!error && data) {
+          // Pre-fill dữ liệu của season đã có
+          setRating(data.rating ?? 0);
+          setLiked(data.liked ?? false);
+          setReview(data.review ?? "");
+          setTags(data.tags ? data.tags.join(", ") : "");
+          setWatchedBefore(true);
+        } else {
+          // Reset form về trống để thêm mới season đó
+          setRating(0);
+          setLiked(false);
+          setReview("");
+          setTags("");
+          setWatchedBefore(false);
+        }
+      }
+      loadSeasonData();
+    }
+  }, [selectedSeason, selectedMovie, isTV, numSeasons, editEntry]);
 
   // Search debounce 350ms
   useEffect(() => {
@@ -167,6 +226,7 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
     setSelectedMovie(null); setWatchedOn(formatDate(new Date()));
     setWatchedBefore(false); setReview(""); setTags("");
     setRating(0); setLiked(false); setSaving(false); setDeleting(false);
+    setSelectedSeason(null);
   };
 
   const handleClose = () => { resetForm(); onOpenChange(false); };
@@ -205,12 +265,22 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
     if (!selectedMovie) return;
     setSaving(true);
     const mediaType = (selectedMovie as any).media_type ?? "movie";
+
+    const baseTitle = selectedMovie.title.split(" — Season")[0];
+    const finalTitle = (isTV && numSeasons > 1 && selectedSeason !== null)
+      ? `${baseTitle} — Season ${selectedSeason}`
+      : baseTitle;
+
+    const finalYear = (isTV && numSeasons > 1 && selectedSeason !== null)
+      ? getSeasonReleaseYear((selectedMovie as any).seasons, selectedSeason, getYear(selectedMovie.release_date))
+      : getYear(selectedMovie.release_date);
+
     const entryData = {
       user_id: STATIC_USER_ID,
       tmdb_id: selectedMovie.id,
       media_type: mediaType,
-      title: selectedMovie.title,
-      year: getYear(selectedMovie.release_date),
+      title: finalTitle,
+      year: finalYear,
       poster_path: selectedMovie.poster_path,
       director: getDirector(selectedMovie),
       watched_on: watchedOn,
@@ -219,6 +289,7 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
       tags: tags.split(",").map((t) => t.trim()).filter(Boolean),
       rating,
       liked,
+      season_number: (isTV && numSeasons > 1) ? selectedSeason : null,
     };
 
     let saved = null;
@@ -228,12 +299,19 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
     } else {
       // Check trùng log (Requirement 4)
       try {
-        const { data: existingEntries, error: checkError } = await supabase
+        let query = supabase
           .from("diary_entries")
           .select("*")
           .eq("user_id", STATIC_USER_ID)
-          .eq("tmdb_id", selectedMovie.id)
-          .limit(1);
+          .eq("tmdb_id", selectedMovie.id);
+
+        if (isTV && numSeasons > 1 && selectedSeason !== null) {
+          query = query.eq("season_number", selectedSeason);
+        } else {
+          query = query.is("season_number", null);
+        }
+
+        const { data: existingEntries, error: checkError } = await query.limit(1);
 
         if (!checkError && existingEntries && existingEntries.length > 0) {
           // Phim đã được log: Cập nhật thông tin và bật watched_before = true
@@ -257,7 +335,6 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
     else alert("Save failed. Please check your Supabase connection.");
   };
 
-  const isTV = (selectedMovie as any)?.media_type === "tv";
   const director = selectedMovie ? getDirector(selectedMovie) : "";
   const year = selectedMovie ? getYear(selectedMovie.release_date) : null;
 
@@ -418,6 +495,26 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
                     </p>
                   )}
                 </div>
+
+                {/* Dropdown Season Selection (Chỉ TV series nhiều season) */}
+                {isTV && numSeasons > 1 && (
+                  <div className="flex items-center gap-3 bg-[#567]/50 rounded-md px-3 py-2 border border-[#678]/40 w-fit">
+                    <span className="text-xs font-semibold text-white uppercase tracking-wider">Select Season</span>
+                    <select
+                      value={selectedSeason ?? 1}
+                      onChange={(e) => setSelectedSeason(Number(e.target.value))}
+                      className="bg-[#2c3440] text-xs text-[#9ab] border border-[#678]/30 rounded px-2.5 py-1 focus:outline-none focus:border-[#00e054] transition-colors cursor-pointer"
+                      disabled={!!editEntry}
+                    >
+                      {Array.from({ length: numSeasons }, (_, i) => i + 1).map((s) => (
+                        <option key={s} value={s}>
+                          Season {s}
+                        </option>
+                      ))}
+                    </select>
+                    {editEntry && <span className="text-[10px] text-muted-foreground italic select-none">(Fixed)</span>}
+                  </div>
+                )}
 
                 {/* Watched On & Before */}
                 <div className="flex flex-wrap items-center gap-4">

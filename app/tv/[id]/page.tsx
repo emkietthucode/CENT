@@ -249,6 +249,7 @@ export default async function TVDetailPage({ params }: PageProps) {
               posterPath={show.poster_path}
               director={directorLabel}
               numberOfSeasons={show.number_of_seasons}
+              seasons={rawSeasons}
             />
           </div>
         </div>
@@ -263,6 +264,7 @@ export default async function TVDetailPage({ params }: PageProps) {
             posterPath={show.poster_path}
             director={directorLabel}
             numberOfSeasons={show.number_of_seasons}
+            seasons={rawSeasons}
           />
         </div>
 
