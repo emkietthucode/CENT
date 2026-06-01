@@ -9,6 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { searchMovies, fetchMovieDetails, getDirector, getYear, getPosterUrl } from "@/lib/tmdb";
 import { addDiaryEntry, updateDiaryEntry, deleteDiaryEntry, STATIC_USER_ID, supabase } from "@/lib/supabase";
 import type { TMDBMovie, TMDBMovieDetail, DiaryEntry } from "@/types";
+import { parseDateStringToISO, formatISOToDateString } from "@/lib/utils";
 
 // ─── Tháng tĩnh — tránh lỗi hydration do locale khác giữa Node.js và browser ──
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -525,10 +526,16 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
                     />
                     <span className="text-sm text-[#9ab]">Watched on</span>
                     <input
-                      type="text"
-                      value={watchedOn}
-                      onChange={(e) => setWatchedOn(e.target.value)}
-                      className="rounded bg-[#567] px-2 py-1 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#00e054]"
+                      type="date"
+                      value={parseDateStringToISO(watchedOn)}
+                      onChange={(e) => {
+                        const newIsoDate = e.target.value;
+                        if (newIsoDate) {
+                          setWatchedOn(formatISOToDateString(newIsoDate));
+                        }
+                      }}
+                      className="rounded bg-[#567] px-2.5 py-1 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#00e054] cursor-pointer"
+                      style={{ colorScheme: "dark" }}
                     />
                   </label>
                   <label className="flex items-center gap-2">
