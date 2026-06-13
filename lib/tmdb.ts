@@ -483,3 +483,35 @@ export async function fetchTVSeasonDetails(
     "en-US"
   );
 }
+
+/** Fetch danh sách ảnh (posters + backdrops) của phim/TV show */
+export async function fetchMediaImages(
+  id: number | string,
+  mediaType: "movie" | "tv"
+): Promise<{ posters: any[]; backdrops: any[] }> {
+  const type = mediaType === "tv" ? "tv" : "movie";
+  return tmdbFetch<{ posters: any[]; backdrops: any[] }>(
+    `/${type}/${id}/images`,
+    { include_image_language: "en,ja,zh,ko,vi,null" },
+    "en-US"
+  );
+}
+
+/** Fetch danh sách các nhóm tập phim (alternative episode groups) của TV Show */
+export async function fetchTVEpisodeGroups(tvId: number | string): Promise<{ results: any[] }> {
+  return tmdbFetch<{ results: any[] }>(
+    `/tv/${tvId}/episode_groups`,
+    {},
+    "en-US"
+  );
+}
+
+/** Fetch chi tiết cấu trúc nhóm tập phim (seasons + episodes) của nhóm đó */
+export async function fetchTVEpisodeGroupDetails(groupId: string): Promise<any> {
+  return tmdbFetch<any>(
+    `/tv/episode_group/${groupId}`,
+    {},
+    "en-US"
+  );
+}
+

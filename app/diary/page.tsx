@@ -14,17 +14,20 @@ export default function DiaryPage() {
   const [diaryEntries, setDiaryEntries] = useState<DiaryEntry[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const loadDiary = useCallback(async () => {
-    setLoading(true);
+  const loadDiary = useCallback(async (silent = false) => {
+    if (!silent) setLoading(true);
     try {
       const entries = await getDiaryEntries();
       setDiaryEntries(entries);
     } catch (err) {
       console.error("Failed to load diary entries:", err);
     } finally {
-      setLoading(false);
+      if (!silent) setLoading(false);
     }
   }, []);
+
+  // Silent refresh — dùng cho mọi thao tác add/edit/delete để tránh loading flash
+  const silentRefresh = useCallback(() => loadDiary(true), [loadDiary]);
 
   useEffect(() => {
     loadDiary();
@@ -69,9 +72,9 @@ export default function DiaryPage() {
           <div className="bg-[#1c242c]/20 p-6 rounded-lg border border-border/40">
             <DiarySection
               entries={diaryEntries}
-              onDelete={loadDiary}
+              onDelete={silentRefresh}
               onEdit={handleEdit}
-              onRefresh={loadDiary}
+              onRefresh={silentRefresh}
             />
           </div>
         ) : (
@@ -90,7 +93,7 @@ export default function DiaryPage() {
       <LogModal
         open={logModalOpen}
         onOpenChange={handleOpenChange}
-        onSaved={loadDiary}
+        onSaved={silentRefresh}
         editEntry={editEntry}
       />
     </div>

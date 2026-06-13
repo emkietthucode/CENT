@@ -95,6 +95,7 @@ interface MovieLogBoxProps {
   director: string;
   numberOfSeasons?: number; // Nhận số lượng seasons
   seasons?: any[]; // Danh sách seasons để lấy ngày phát hành
+  customSeasonNames?: Record<string, string>;
 }
 
 // ─── Main Log Box Component ───────────────────────────────────────────────────
@@ -106,7 +107,8 @@ export function MovieLogBox({
   posterPath, 
   director,
   numberOfSeasons = 0,
-  seasons = []
+  seasons = [],
+  customSeasonNames = {}
 }: MovieLogBoxProps) {
   const [rating, setRating] = useState(0);
   const [liked, setLiked] = useState(false);
@@ -168,8 +170,12 @@ export function MovieLogBox({
     saveTimeoutRef.current = setTimeout(async () => {
       const today = formatDate(new Date());
       
+      const customName = customSeasonNames[String(selectedSeason)];
+      const TMDBName = seasons.find((s: any) => s.season_number === selectedSeason)?.name;
+      const seasonName = customName || TMDBName || `Season ${selectedSeason}`;
+
       const finalTitle = (mediaType === "tv" && numberOfSeasons > 1 && selectedSeason !== null)
-        ? `${title} — Season ${selectedSeason}`
+        ? `${title} — ${seasonName}`
         : title;
 
       const finalYear = (mediaType === "tv" && numberOfSeasons > 1 && selectedSeason !== null)
@@ -305,11 +311,16 @@ export function MovieLogBox({
               onChange={(e) => setSelectedSeason(Number(e.target.value))}
               className="bg-[#2c3440] text-xs text-[#9ab] border border-border/40 rounded px-2 py-0.5 focus:outline-none focus:border-[#00e054] transition-colors cursor-pointer"
             >
-              {Array.from({ length: numberOfSeasons }, (_, i) => i + 1).map((s) => (
-                <option key={s} value={s}>
-                  Season {s}
-                </option>
-              ))}
+              {Array.from({ length: numberOfSeasons }, (_, i) => i + 1).map((s) => {
+                const customName = customSeasonNames[String(s)];
+                const TMDBName = seasons.find((x: any) => x.season_number === s)?.name;
+                const label = customName || TMDBName || `Season ${s}`;
+                return (
+                  <option key={s} value={s}>
+                    {label}
+                  </option>
+                );
+              })}
             </select>
           </div>
         </>

@@ -9,7 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { searchMovies, fetchMovieDetails, getDirector, getYear, getPosterUrl } from "@/lib/tmdb";
 import { addDiaryEntry, updateDiaryEntry, deleteDiaryEntry, STATIC_USER_ID, supabase } from "@/lib/supabase";
 import type { TMDBMovie, TMDBMovieDetail, DiaryEntry } from "@/types";
-import { parseDateStringToISO, formatISOToDateString } from "@/lib/utils";
+import { DatePicker } from "@/components/date-picker";
 
 // ─── Tháng tĩnh — tránh lỗi hydration do locale khác giữa Node.js và browser ──
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -129,6 +129,10 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
   // State quản lý season chọn (TV series nhiều season)
   const [selectedSeason, setSelectedSeason] = useState<number | null>(null);
 
+  // Customizations
+  const [customSeasonNames, setCustomSeasonNames] = useState<Record<string, string>>({});
+  const [customPosterPath, setCustomPosterPath] = useState<string | null>(null);
+
   const [mounted, setMounted] = useState(false);
 
   // Set ngày tháng chỉ phía client (fix hydration mismatch)
@@ -144,6 +148,21 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
   useEffect(() => {
     if (open) {
       if (editEntry) {
+        // Tải customizations cho edit entry để lấy poster và tên season tùy chỉnh
+        async function loadCustomizationForEdit() {
+          try {
+            const { getMediaCustomization } = await import("@/lib/supabase");
+            const customization = await getMediaCustomization(editEntry.tmdb_id, editEntry.media_type);
+            if (customization) {
+              setCustomSeasonNames(customization.custom_season_names || {});
+              setCustomPosterPath(customization.custom_poster_path || null);
+            }
+          } catch (err) {
+            console.error("Failed to load customization for edit:", err);
+          }
+        }
+        loadCustomizationForEdit();
+
         setSelectedMovie({
           id: editEntry.tmdb_id,
           title: editEntry.title.split(" — Season")[0], // Lấy title gốc không suffix
@@ -228,6 +247,8 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
     setWatchedBefore(false); setReview(""); setTags("");
     setRating(0); setLiked(false); setSaving(false); setDeleting(false);
     setSelectedSeason(null);
+    setCustomSeasonNames({});
+    setCustomPosterPath(null);
   };
 
   const handleClose = () => { resetForm(); onOpenChange(false); };
@@ -237,10 +258,51 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
     try {
       const type = item.media_type === "tv" ? "tv" : "movie";
       const detail = await fetchMovieDetails(item.id, type);
-      setSelectedMovie({ ...detail, media_type: item.media_type });
+
+      // Load customization from database
+      const { getMediaCustomization } = await import("@/lib/supabase");
+      const customization = await getMediaCustomization(item.id, type);
+
+      let finalSeasons = detail.seasons || [];
+
+      if (customization) {
+        setCustomSeasonNames(customization.custom_season_names || {});
+        setCustomPosterPath(customization.custom_poster_path || null);
+
+        // Nếu TV series dùng episode group tùy chỉnh, ta fetch details của group đó để lấy seasons
+        if (type === "tv" && customization.season_group_id) {
+          const { fetchTVEpisodeGroupDetails } = await import("@/lib/tmdb");
+          try {
+            const groupDetails = await fetchTVEpisodeGroupDetails(customization.season_group_id);
+            if (groupDetails && groupDetails.groups) {
+              finalSeasons = groupDetails.groups.map((g: any) => ({
+                id: g.id ? parseInt(String(g.id).replace(/\D/g, '')) || Math.floor(Math.random() * 100000) : Math.floor(Math.random() * 100000),
+                name: g.name,
+                overview: g.overview || "",
+                season_number: g.order || 1,
+                air_date: g.episodes?.[0]?.air_date || null,
+                poster_path: g.poster_path || null,
+                episode_count: g.episodes?.length || 0,
+              }));
+            }
+          } catch (err) {
+            console.error("Error fetching custom season group in LogModal:", err);
+          }
+        }
+      } else {
+        setCustomSeasonNames({});
+        setCustomPosterPath(null);
+      }
+
+      setSelectedMovie({
+        ...detail,
+        media_type: item.media_type,
+        seasons: finalSeasons,
+        poster_path: customization?.custom_poster_path || detail.poster_path
+      });
       setStep(2);
-    } catch {
-      // Fallback nếu lỗi detail
+    } catch (err) {
+      console.error("Failed to load details in LogModal:", err);
       setSelectedMovie(item as any);
       setStep(2);
     } finally { setDetailLoading(false); }
@@ -268,8 +330,17 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
     const mediaType = (selectedMovie as any).media_type ?? "movie";
 
     const baseTitle = selectedMovie.title.split(" — Season")[0];
+    
+    // Tìm tên của season được chọn (bao gồm tên tùy chỉnh của người dùng hoặc tên từ Episode Group)
+    let seasonName = `Season ${selectedSeason}`;
+    if (selectedSeason !== null && selectedMovie.seasons) {
+      const customName = customSeasonNames[String(selectedSeason)];
+      const TMDBName = selectedMovie.seasons.find((s: any) => s.season_number === selectedSeason)?.name;
+      seasonName = customName || TMDBName || `Season ${selectedSeason}`;
+    }
+
     const finalTitle = (isTV && numSeasons > 1 && selectedSeason !== null)
-      ? `${baseTitle} — Season ${selectedSeason}`
+      ? `${baseTitle} — ${seasonName}`
       : baseTitle;
 
     const finalYear = (isTV && numSeasons > 1 && selectedSeason !== null)
@@ -282,7 +353,7 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
       media_type: mediaType,
       title: finalTitle,
       year: finalYear,
-      poster_path: selectedMovie.poster_path,
+      poster_path: customPosterPath || selectedMovie.poster_path,
       director: getDirector(selectedMovie),
       watched_on: watchedOn,
       watched_before: watchedBefore,
@@ -507,11 +578,16 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
                       className="bg-[#2c3440] text-xs text-[#9ab] border border-[#678]/30 rounded px-2.5 py-1 focus:outline-none focus:border-[#00e054] transition-colors cursor-pointer"
                       disabled={!!editEntry}
                     >
-                      {Array.from({ length: numSeasons }, (_, i) => i + 1).map((s) => (
-                        <option key={s} value={s}>
-                          Season {s}
-                        </option>
-                      ))}
+                      {Array.from({ length: numSeasons }, (_, i) => i + 1).map((s) => {
+                        const customName = customSeasonNames[String(s)];
+                        const TMDBName = selectedMovie.seasons?.find((x: any) => x.season_number === s)?.name;
+                        const label = customName || TMDBName || `Season ${s}`;
+                        return (
+                          <option key={s} value={s}>
+                            {label}
+                          </option>
+                        );
+                      })}
                     </select>
                     {editEntry && <span className="text-[10px] text-muted-foreground italic select-none">(Fixed)</span>}
                   </div>
@@ -525,17 +601,9 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
                       className="h-5 w-5 border-[#678] data-[state=checked]:bg-[#00e054] data-[state=checked]:border-[#00e054]"
                     />
                     <span className="text-sm text-[#9ab]">Watched on</span>
-                    <input
-                      type="date"
-                      value={parseDateStringToISO(watchedOn)}
-                      onChange={(e) => {
-                        const newIsoDate = e.target.value;
-                        if (newIsoDate) {
-                          setWatchedOn(formatISOToDateString(newIsoDate));
-                        }
-                      }}
-                      className="rounded bg-[#567] px-2.5 py-1 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#00e054] cursor-pointer"
-                      style={{ colorScheme: "dark" }}
+                    <DatePicker
+                      value={watchedOn}
+                      onChange={(dateStr) => setWatchedOn(dateStr)}
                     />
                   </label>
                   <label className="flex items-center gap-2">

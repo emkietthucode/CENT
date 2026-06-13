@@ -194,19 +194,51 @@ export async function importFromCSV(
       let poster_path = posterPathIdx !== -1 ? row[posterPathIdx] : null;
 
       if (isNaN(tmdb_id)) {
-        // dynamic lookup via searchMovies
+        // dynamic lookup via searchMovies — truyền year vào query để TMDB lọc chính xác
         try {
           const { searchMovies } = await import("@/lib/tmdb");
-          const searchResults = await searchMovies(title);
+          const searchQuery = year ? `${title} ${year}` : title;
+          const searchResults = await searchMovies(searchQuery);
           if (searchResults && searchResults.length > 0) {
+            // Thuật toán chọn kết quả tốt nhất:
+            // 1. Ưu tiên khớp chính xác cả tên + năm
+            // 2. Khớp gần đúng tên + đúng năm
+            // 3. Khớp tên gần nhất
+            const titleLower = title.toLowerCase();
             let match = searchResults[0];
-            if (year) {
-              const yearMatch = searchResults.find((r) => {
-                const rYear = r.release_date ? parseInt(r.release_date.substring(0, 4)) : null;
-                return rYear === year;
-              });
-              if (yearMatch) match = yearMatch;
+            let bestScore = -1;
+
+            for (const r of searchResults) {
+              let score = 0;
+              const rTitle = (r.title || "").toLowerCase();
+              const rOrigTitle = (r.original_title || "").toLowerCase();
+              const rYear = r.release_date ? parseInt(r.release_date.substring(0, 4)) : null;
+
+              // Điểm tương đồng tiêu đề
+              if (rTitle === titleLower || rOrigTitle === titleLower) {
+                score += 100; // Khớp chính xác
+              } else if (rTitle.includes(titleLower) || titleLower.includes(rTitle)) {
+                score += 50; // Khớp một phần
+              } else if (rOrigTitle.includes(titleLower) || titleLower.includes(rOrigTitle)) {
+                score += 40;
+              }
+
+              // Điểm năm
+              if (year && rYear === year) {
+                score += 80; // Đúng năm
+              } else if (year && rYear && Math.abs(rYear - year) <= 1) {
+                score += 30; // Gần đúng năm (±1)
+              }
+
+              // Điểm popularity (tiebreaker)
+              score += Math.min((r.popularity || 0) / 100, 5);
+
+              if (score > bestScore) {
+                bestScore = score;
+                match = r;
+              }
             }
+
             tmdb_id = match.id;
             media_type = match.media_type === "tv" ? "tv" : "movie";
             poster_path = match.poster_path ?? null;
@@ -222,21 +254,31 @@ export async function importFromCSV(
         }
       }
 
-      // 3. Fallback poster lookup if ID is specified but poster is not
-      if (tmdb_id && !poster_path) {
+      // 3. Luôn xác minh năm released từ TMDB (CSV có thể sai năm)
+      //    Đồng thời lấy poster nếu chưa có
+      let verifiedYear: number | null = year;
+      if (tmdb_id) {
         try {
           const { fetchMovieDetails } = await import("@/lib/tmdb");
           const details = await fetchMovieDetails(tmdb_id, media_type);
-          poster_path = details?.poster_path ?? null;
+          if (details?.release_date) {
+            const tmdbYear = parseInt(details.release_date.substring(0, 4));
+            if (!isNaN(tmdbYear)) {
+              verifiedYear = tmdbYear;
+            }
+          }
+          if (!poster_path && details?.poster_path) {
+            poster_path = details.poster_path;
+          }
         } catch (tmdbErr) {
-          console.warn("Failed to fetch poster from TMDB:", tmdbErr);
+          console.warn("Failed to verify year from TMDB:", tmdbErr);
         }
       }
 
       const entry = {
         tmdb_id,
         title,
-        year: year || (tmdb_id ? null : null), // will be retrieved later or used as-is
+        year: verifiedYear,
         poster_path,
         rating,
         liked,
@@ -245,17 +287,6 @@ export async function importFromCSV(
         review,
         media_type
       };
-
-      // If we mapped the year from TMDB but didn't have it in CSV, try filling it
-      if (tmdb_id && !entry.year) {
-        try {
-          const { fetchMovieDetails } = await import("@/lib/tmdb");
-          const details = await fetchMovieDetails(tmdb_id, media_type);
-          if (details?.release_date) {
-            entry.year = parseInt(details.release_date.substring(0, 4)) || null;
-          }
-        } catch {}
-      }
 
       await onAddEntry(entry);
       successCount++;
@@ -328,7 +359,7 @@ function TableStarRating({
     
     try {
       await updateDiaryEntry(entryId, { rating: targetVal });
-      onRefresh();
+      // Không gọi onRefresh() ở đây — local state đã cập nhật, tránh reload toàn bộ bảng
     } catch (err) {
       console.error("Failed to update rating directly in table:", err);
       setRating(initialRating);
@@ -397,7 +428,7 @@ function TableLikeToggle({
 
     try {
       await updateDiaryEntry(entryId, { liked: targetVal });
-      onRefresh();
+      // Không gọi onRefresh() ở đây — local state đã cập nhật, tránh reload toàn bộ bảng
     } catch (err) {
       console.error("Failed to toggle like directly in table:", err);
       setLiked(initialLiked);

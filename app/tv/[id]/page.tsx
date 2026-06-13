@@ -9,10 +9,14 @@ import {
   getPosterUrl,
   getBackdropUrl,
   formatCount,
+  fetchTVEpisodeGroups,
 } from "@/lib/tmdb";
 import { parseOMDBRatings } from "@/lib/omdb";
 import { MovieLogBox } from "@/components/movie-log-box";
 import { TVSeasonsSection } from "@/components/tv-seasons-section";
+import { getMediaCustomization } from "@/lib/supabase";
+import { CustomizablePoster } from "@/components/customizable-poster";
+import { DetailHeader } from "@/components/detail-header";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -35,6 +39,7 @@ async function fetchOmdbServer(title: string, year: number | null, mediaType: "m
 
 export default async function TVDetailPage({ params }: PageProps) {
   const { id } = await params;
+  const tvIdNum = parseInt(id, 10);
 
   let show: any;
   try {
@@ -43,9 +48,21 @@ export default async function TVDetailPage({ params }: PageProps) {
     notFound();
   }
 
+  // Load customizations & episode groups
+  const [customization, episodeGroupsData] = await Promise.all([
+    getMediaCustomization(tvIdNum, "tv"),
+    fetchTVEpisodeGroups(tvIdNum).catch(() => ({ results: [] })),
+  ]);
+
+  const customPosterPath = customization?.custom_poster_path;
+  const customBackdropPath = customization?.custom_backdrop_path;
+  const selectedGroupId = customization?.season_group_id || null;
+  const customSeasonNames = customization?.custom_season_names || {};
+
   const year = getYear(show.release_date);
-  const posterUrl = getPosterUrl(show.poster_path, "w500");
-  const backdropUrl = getBackdropUrl(show.backdrop_path, "w1280");
+  const posterUrl = getPosterUrl(customPosterPath || show.poster_path, "w500");
+  const backdropUrl = getBackdropUrl(customBackdropPath || show.backdrop_path, "w1280");
+  const episodeGroups = episodeGroupsData?.results || [];
   const topCast = show.credits?.cast?.slice(0, 6) ?? [];
 
   // Crew
@@ -84,35 +101,33 @@ export default async function TVDetailPage({ params }: PageProps) {
   // director label for log box
   const directorLabel = allDirectors.map((d: any) => d.name).join(", ") || "Unknown";
 
-  // Seasons data (already in TMDB detail response)
-  const rawSeasons: any[] = show.seasons ?? [];
+  // Seasons data - Check if using custom episode group
+  let rawSeasons: any[] = show.seasons ?? [];
+  let customGroupDetails = null;
+
+  if (selectedGroupId) {
+    const { fetchTVEpisodeGroupDetails } = await import("@/lib/tmdb");
+    try {
+      customGroupDetails = await fetchTVEpisodeGroupDetails(selectedGroupId);
+      if (customGroupDetails && customGroupDetails.groups) {
+        rawSeasons = customGroupDetails.groups.map((g: any) => ({
+          id: g.id ? parseInt(String(g.id).replace(/\D/g, '')) || Math.floor(Math.random() * 100000) : Math.floor(Math.random() * 100000),
+          name: g.name,
+          overview: g.overview || "",
+          season_number: g.order || 1,
+          air_date: g.episodes?.[0]?.air_date || null,
+          poster_path: g.poster_path || null,
+          episode_count: g.episodes?.length || 0,
+        }));
+      }
+    } catch (err) {
+      console.error("Error loading custom episode group details:", err);
+    }
+  }
 
   return (
     <div className="min-h-screen bg-background">
-      {/* ── Header ── */}
-      <header className="sticky top-0 z-50 border-b border-border bg-[#14181c]/95 backdrop-blur supports-[backdrop-filter]:bg-[#14181c]/80">
-        <div className="mx-auto flex h-14 max-w-[1200px] items-center justify-between px-4">
-          <Link href="/" className="flex items-center group flex-shrink-0">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo.svg" alt="CEnt" className="h-14 w-auto group-hover:opacity-90 transition-opacity" />
-          </Link>
-          <div className="hidden items-center gap-1 md:flex">
-            <div className="flex items-center gap-2 rounded px-2 py-1.5 text-sm text-[#9ab] select-none">
-              <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#456]">
-                <User className="h-3.5 w-3.5 text-[#9ab]" />
-              </div>
-              <span className="font-medium text-white">FILMFAN_01</span>
-            </div>
-            <nav className="flex items-center gap-4 pl-4">
-              <Link href="/" className="text-sm font-semibold uppercase tracking-wider text-[#9ab] hover:text-[#40bcf4] transition-colors">Films</Link>
-              <Link href="/tv-series" className="text-sm font-semibold uppercase tracking-wider text-[#9ab] hover:text-[#40bcf4] transition-colors">TV Series</Link>
-              <Link href="/watchlist" className="text-sm font-semibold uppercase tracking-wider text-[#9ab] hover:text-[#40bcf4] transition-colors">Watchlist</Link>
-              <Link href="/diary" className="text-sm font-semibold uppercase tracking-wider text-[#9ab] hover:text-[#40bcf4] transition-colors">Diary</Link>
-            </nav>
-          </div>
-          <div className="w-[60px]" />
-        </div>
-      </header>
+      <DetailHeader />
 
       {/* ── Hero Backdrop ── */}
       {backdropUrl && (
@@ -136,9 +151,16 @@ export default async function TVDetailPage({ params }: PageProps) {
 
           {/* Poster */}
           <div className="hidden sm:block flex-shrink-0">
-            <div className="relative overflow-hidden rounded-md shadow-2xl shadow-black/80 border border-border/60" style={{ width: 200, height: 300 }}>
-              <Image src={posterUrl} alt={show.title} fill className="object-cover" priority sizes="200px" />
-            </div>
+            <CustomizablePoster
+              tmdbId={show.id}
+              mediaType="tv"
+              title={show.title}
+              defaultPosterPath={show.poster_path}
+              defaultBackdropPath={show.backdrop_path}
+              currentPosterPath={customPosterPath || null}
+              currentBackdropPath={customBackdropPath || null}
+              posterUrl={posterUrl}
+            />
           </div>
 
           {/* Info */}
@@ -246,10 +268,11 @@ export default async function TVDetailPage({ params }: PageProps) {
               mediaType="tv"
               title={show.title}
               year={year}
-              posterPath={show.poster_path}
+              posterPath={customPosterPath || show.poster_path}
               director={directorLabel}
-              numberOfSeasons={show.number_of_seasons}
+              numberOfSeasons={rawSeasons.length}
               seasons={rawSeasons}
+              customSeasonNames={customSeasonNames}
             />
           </div>
         </div>
@@ -261,10 +284,11 @@ export default async function TVDetailPage({ params }: PageProps) {
             mediaType="tv"
             title={show.title}
             year={year}
-            posterPath={show.poster_path}
+            posterPath={customPosterPath || show.poster_path}
             director={directorLabel}
-            numberOfSeasons={show.number_of_seasons}
+            numberOfSeasons={rawSeasons.length}
             seasons={rawSeasons}
+            customSeasonNames={customSeasonNames}
           />
         </div>
 
@@ -377,7 +401,13 @@ export default async function TVDetailPage({ params }: PageProps) {
 
         {/* ── Seasons & Episodes ── */}
         {rawSeasons.length > 0 && (
-          <TVSeasonsSection tvId={show.id} seasons={rawSeasons} />
+          <TVSeasonsSection
+            tvId={show.id}
+            seasons={rawSeasons}
+            episodeGroups={episodeGroups}
+            selectedGroupId={selectedGroupId}
+            customSeasonNames={customSeasonNames}
+          />
         )}
 
         <div className="pb-16" />

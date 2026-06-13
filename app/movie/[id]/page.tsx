@@ -12,6 +12,9 @@ import {
 } from "@/lib/tmdb";
 import { parseOMDBRatings } from "@/lib/omdb";
 import { MovieLogBox } from "@/components/movie-log-box";
+import { getMediaCustomization } from "@/lib/supabase";
+import { CustomizablePoster } from "@/components/customizable-poster";
+import { DetailHeader } from "@/components/detail-header";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -38,6 +41,7 @@ async function fetchOmdbServer(
 
 export default async function MovieDetailPage({ params }: PageProps) {
   const { id } = await params;
+  const tmdbIdNum = parseInt(id, 10);
 
   let movie: any;
   try {
@@ -48,8 +52,14 @@ export default async function MovieDetailPage({ params }: PageProps) {
 
   const director = getDirector(movie);
   const year = getYear(movie.release_date);
-  const posterUrl = getPosterUrl(movie.poster_path, "w500");
-  const backdropUrl = getBackdropUrl(movie.backdrop_path, "w1280");
+
+  // Load customizations
+  const customization = await getMediaCustomization(tmdbIdNum, "movie");
+  const customPosterPath = customization?.custom_poster_path;
+  const customBackdropPath = customization?.custom_backdrop_path;
+
+  const posterUrl = getPosterUrl(customPosterPath || movie.poster_path, "w500");
+  const backdropUrl = getBackdropUrl(customBackdropPath || movie.backdrop_path, "w1280");
 
   const topCast = movie.credits?.cast?.slice(0, 6) ?? [];
 
@@ -80,30 +90,7 @@ export default async function MovieDetailPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* ── Shared Header ── */}
-      <header className="sticky top-0 z-50 border-b border-border bg-[#14181c]/95 backdrop-blur supports-[backdrop-filter]:bg-[#14181c]/80">
-        <div className="mx-auto flex h-15 max-w-[1200px] items-center justify-between px-4">
-          <Link href="/" className="flex items-center group flex-shrink-0">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo.svg" alt="CEnt" className="h-30 w-auto group-hover:opacity-90 transition-opacity" />
-          </Link>
-          <div className="hidden items-center gap-1 md:flex">
-            <div className="flex items-center gap-2 rounded px-2 py-1.5 text-sm text-[#9ab] select-none">
-              <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#456]">
-                <User className="h-3.5 w-3.5 text-[#9ab]" />
-              </div>
-              <span className="font-medium text-white">FILMFAN_01</span>
-            </div>
-            <nav className="flex items-center gap-4 pl-4">
-              <Link href="/" className="text-sm font-semibold uppercase tracking-wider text-[#9ab] hover:text-[#40bcf4] transition-colors">Films</Link>
-              <Link href="/tv-series" className="text-sm font-semibold uppercase tracking-wider text-[#9ab] hover:text-[#40bcf4] transition-colors">TV Series</Link>
-              <Link href="/watchlist" className="text-sm font-semibold uppercase tracking-wider text-[#9ab] hover:text-[#40bcf4] transition-colors">Watchlist</Link>
-              <Link href="/diary" className="text-sm font-semibold uppercase tracking-wider text-[#9ab] hover:text-[#40bcf4] transition-colors">Diary</Link>
-            </nav>
-          </div>
-          <div className="w-[60px]" />
-        </div>
-      </header>
+      <DetailHeader />
 
       {backdropUrl && (
         <div className="relative mx-auto max-w-[1200px] bg-[#0a0d10]" style={{ height: 520 }}>
@@ -127,9 +114,16 @@ export default async function MovieDetailPage({ params }: PageProps) {
 
           {/* Poster */}
           <div className="hidden sm:block flex-shrink-0">
-            <div className="relative overflow-hidden rounded-md shadow-2xl shadow-black/80 border border-border/60" style={{ width: 200, height: 300 }}>
-              <Image src={posterUrl} alt={movie.title} fill className="object-cover" priority sizes="200px" />
-            </div>
+            <CustomizablePoster
+              tmdbId={movie.id}
+              mediaType="movie"
+              title={movie.title}
+              defaultPosterPath={movie.poster_path}
+              defaultBackdropPath={movie.backdrop_path}
+              currentPosterPath={customPosterPath || null}
+              currentBackdropPath={customBackdropPath || null}
+              posterUrl={posterUrl}
+            />
           </div>
 
           {/* Info — flex-1, takes remaining space */}
@@ -180,7 +174,7 @@ export default async function MovieDetailPage({ params }: PageProps) {
                   mediaType="movie"
                   title={movie.title}
                   year={year}
-                  posterPath={movie.poster_path}
+                  posterPath={customPosterPath || movie.poster_path}
                   director={director}
                 />
               </div>

@@ -178,3 +178,57 @@ export async function isInWatchlist(tmdbId: number, mediaType: string): Promise<
   return !!data;
 }
 
+// ─── Media Customization CRUD ──────────────────────────────────────────────────
+
+export interface MediaCustomization {
+  id?: string;
+  user_id?: string;
+  tmdb_id: number;
+  media_type: string;
+  custom_poster_path?: string | null;
+  custom_backdrop_path?: string | null;
+  season_group_id?: string | null;
+  custom_season_names?: Record<string, string>;
+  created_at?: string;
+}
+
+/** Lấy cấu hình tùy chỉnh cho phim/TV show */
+export async function getMediaCustomization(tmdbId: number, mediaType: string): Promise<MediaCustomization | null> {
+  const { data, error } = await supabase
+    .from("media_customizations")
+    .select("*")
+    .eq("user_id", STATIC_USER_ID)
+    .eq("tmdb_id", tmdbId)
+    .eq("media_type", mediaType)
+    .maybeSingle();
+
+  if (error) {
+    console.error("[Supabase] getMediaCustomization error:", error.message);
+    return null;
+  }
+  return data;
+}
+
+/** Lưu cấu hình tùy chỉnh cho phim/TV show */
+export async function upsertMediaCustomization(
+  customization: Omit<MediaCustomization, 'id' | 'user_id' | 'created_at'> & Partial<Pick<MediaCustomization, 'user_id'>>
+): Promise<MediaCustomization | null> {
+  const payload = {
+    ...customization,
+    user_id: STATIC_USER_ID,
+  };
+
+  const { data, error } = await supabase
+    .from("media_customizations")
+    .upsert([payload], { onConflict: "user_id,tmdb_id,media_type" })
+    .select()
+    .single();
+
+  if (error) {
+    console.error("[Supabase] upsertMediaCustomization error:", error.message);
+    return null;
+  }
+  return data;
+}
+
+

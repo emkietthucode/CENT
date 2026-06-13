@@ -114,3 +114,26 @@ SELECT table_name, column_name, data_type
 FROM information_schema.columns
 WHERE table_name IN ('diary_entries', 'omdb_cache', 'watchlist')
 ORDER BY table_name, ordinal_position;
+
+
+-- 5. Bảng media_customizations lưu poster, backdrop và season group tùy chỉnh
+CREATE TABLE IF NOT EXISTS media_customizations (
+  id                    UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  user_id               TEXT NOT NULL DEFAULT 'FILMFAN_01',
+  tmdb_id               INTEGER NOT NULL,
+  media_type            TEXT NOT NULL,  -- 'movie' | 'tv'
+  custom_poster_path    TEXT,
+  custom_backdrop_path  TEXT,
+  season_group_id       TEXT,           -- ID nhóm tập phim từ TMDB
+  custom_season_names   JSONB DEFAULT '{}', -- Lưu tên tự đặt cho season { "1": "Soul Society Arc" }
+  created_at            TIMESTAMPTZ DEFAULT NOW() NOT NULL,
+  UNIQUE(user_id, tmdb_id, media_type)
+);
+
+-- RLS cho media_customizations
+ALTER TABLE media_customizations ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Allow all operations for media_customizations"
+  ON media_customizations FOR ALL
+  USING (true) WITH CHECK (true);
+
