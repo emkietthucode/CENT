@@ -5,6 +5,7 @@ import { Header } from "@/components/header";
 import { DiarySection } from "@/components/diary-section";
 import { getDiaryEntries } from "@/lib/supabase";
 import { LogModal } from "@/components/log-modal";
+import { Footer } from "@/components/footer";
 import type { DiaryEntry } from "@/types";
 
 export default function DiaryPage() {
@@ -96,6 +97,7 @@ export default function DiaryPage() {
         onSaved={silentRefresh}
         editEntry={editEntry}
       />
+      <Footer />
     </div>
   );
 }

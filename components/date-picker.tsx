@@ -240,20 +240,70 @@ export function DatePicker({ value, onChange }: DatePickerProps) {
     return `${startYear} – ${startYear + 11}`;
   };
 
+  const [inputValue, setInputValue] = useState(value);
+
+  // Sync with value prop
+  useEffect(() => {
+    setInputValue(value);
+  }, [value]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const text = e.target.value;
+    setInputValue(text);
+    
+    // Parse dynamically. If they typed a complete valid date, trigger onChange
+    const parts = text.trim().split(/\s+/);
+    if (parts.length === 3) {
+      const d = parseInt(parts[0], 10);
+      const mIdx = MONTHS.findIndex(m => m.toLowerCase() === parts[1].toLowerCase());
+      const y = parseInt(parts[2], 10);
+      if (!isNaN(d) && mIdx !== -1 && !isNaN(y) && y >= 1900 && y <= 2100) {
+        const parsed = new Date(y, mIdx, d);
+        if (!isNaN(parsed.getTime())) {
+          onChange(formatDisplayDate(parsed));
+        }
+      }
+    }
+  };
+
+  const handleBlur = () => {
+    const parsed = parseDisplayDate(inputValue);
+    if (!isNaN(parsed.getTime())) {
+      const formatted = formatDisplayDate(parsed);
+      setInputValue(formatted);
+      onChange(formatted);
+    } else {
+      setInputValue(value);
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.currentTarget.blur();
+    }
+  };
+
   return (
-    <div ref={containerRef} className="relative">
-      {/* Trigger Button */}
-      <button
-        type="button"
+    <div ref={containerRef} className="relative flex items-center bg-[#567]/50 rounded border border-[#567]/30 px-2.5 py-1 text-sm text-white transition-colors focus-within:ring-1 focus-within:ring-[#00e054]">
+      <Calendar 
+        className="h-3.5 w-3.5 text-[#9ab] flex-shrink-0 cursor-pointer hover:text-white" 
         onClick={() => {
           setIsOpen(!isOpen);
           if (!isOpen) setViewMode("days");
+        }} 
+      />
+      <input
+        type="text"
+        value={inputValue}
+        onChange={handleInputChange}
+        onBlur={handleBlur}
+        onKeyDown={handleKeyDown}
+        onFocus={() => {
+          setIsOpen(true);
+          setViewMode("days");
         }}
-        className="flex items-center gap-2 rounded bg-[#567] px-2.5 py-1 text-sm text-white hover:bg-[#678] focus:outline-none focus:ring-1 focus:ring-[#00e054] transition-colors cursor-pointer"
-      >
-        <Calendar className="h-3.5 w-3.5 text-[#9ab]" />
-        <span className="tabular-nums">{value}</span>
-      </button>
+        className="bg-transparent border-none outline-none text-xs text-white font-bold ml-1.5 w-24 tabular-nums focus:ring-0 focus:outline-none p-0"
+      />
 
       {/* Dropdown Calendar */}
       {isOpen && (

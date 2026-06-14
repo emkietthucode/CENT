@@ -15,6 +15,7 @@ import { MovieLogBox } from "@/components/movie-log-box";
 import { getMediaCustomization } from "@/lib/supabase";
 import { CustomizablePoster } from "@/components/customizable-poster";
 import { DetailHeader } from "@/components/detail-header";
+import { Footer } from "@/components/footer";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -90,7 +91,13 @@ export default async function MovieDetailPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-background">
-      <DetailHeader />
+      <DetailHeader currentMedia={{
+        id: movie.id,
+        title: movie.title,
+        media_type: "movie",
+        poster_path: movie.poster_path,
+        release_date: movie.release_date
+      }} />
 
       {backdropUrl && (
         <div className="relative mx-auto max-w-[1200px] bg-[#0a0d10]" style={{ height: 520 }}>
@@ -349,19 +356,7 @@ export default async function MovieDetailPage({ params }: PageProps) {
         <div className="pb-16" />
       </div>
 
-      {/* Footer */}
-      <footer className="border-t border-border bg-[#0d1114] py-8 mt-8">
-        <div className="mx-auto max-w-[1200px] px-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center group">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo.svg" alt="CEnt" className="h-10 w-auto opacity-70 group-hover:opacity-100 transition-opacity" />
-          </Link>
-          <p className="text-xs text-muted-foreground">
-            Data from <a href="https://www.themoviedb.org" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">TMDB</a>
-            {" "}& <a href="https://www.imdb.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">IMDb</a>
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

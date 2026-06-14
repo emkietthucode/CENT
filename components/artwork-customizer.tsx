@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { X, Check, Loader2, Image as ImageIcon, Sparkles, RefreshCcw } from "lucide-react";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
 import { getPosterUrl, getBackdropUrl } from "@/lib/tmdb";
@@ -126,6 +126,9 @@ export function ArtworkCustomizer({
               Customize Artwork
             </DialogTitle>
           </div>
+          <DialogDescription className="sr-only">
+            Choose custom poster or backdrop artwork for this movie or TV series.
+          </DialogDescription>
           <button
             onClick={onClose}
             className="rounded-full p-1 text-[#9ab] hover:bg-secondary hover:text-white transition-all duration-200"

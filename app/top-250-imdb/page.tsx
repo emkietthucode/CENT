@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { Header } from "@/components/header";
 import { MovieCard } from "@/components/movie-grid";
 import { topIMDBMovies } from "@/lib/top-imdb-data";
+import { Footer } from "@/components/footer";
 import { Loader2 } from "lucide-react";
 import { LogModal } from "@/components/log-modal";
 
@@ -107,13 +108,7 @@ export default function Top250IMDBPage() {
         }}
       />
 
-      <footer className="border-t border-border bg-[#0d1114] py-8 mt-12">
-        <div className="mx-auto max-w-[1200px] px-4 text-center">
-          <p className="text-xs text-muted-foreground">
-            CEnt · Clone Letterboxd · IMDb Top 250 Phim Điện Ảnh Xuất Sắc Nhất
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

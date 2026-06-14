@@ -3,12 +3,12 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { X, ChevronLeft, Heart, Loader2, Tv, Film } from "lucide-react";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { searchMovies, fetchMovieDetails, getDirector, getYear, getPosterUrl } from "@/lib/tmdb";
 import { addDiaryEntry, updateDiaryEntry, deleteDiaryEntry, STATIC_USER_ID, supabase } from "@/lib/supabase";
-import type { TMDBMovie, TMDBMovieDetail, DiaryEntry } from "@/types";
+import type { TMDBMovie, TMDBMovieDetail, TMDBSeason, DiaryEntry } from "@/types";
 import { DatePicker } from "@/components/date-picker";
 
 // ─── Tháng tĩnh — tránh lỗi hydration do locale khác giữa Node.js và browser ──
@@ -102,9 +102,14 @@ interface LogModalProps {
   onOpenChange: (open: boolean) => void;
   onSaved: () => void;
   editEntry?: DiaryEntry | null;
+  initialMedia?: any;
 }
 
-export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalProps) {
+type TMDBMovieDetailWithSeasons = TMDBMovieDetail & {
+  seasons?: TMDBSeason[];
+};
+
+export function LogModal({ open, onOpenChange, onSaved, editEntry, initialMedia }: LogModalProps) {
   const [step, setStep] = useState<1 | 2>(1);
 
   // Step 1: Search
@@ -113,7 +118,7 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
   const [searchLoading, setSearchLoading] = useState(false);
 
   // Step 2: Selected item
-  const [selectedMovie, setSelectedMovie] = useState<TMDBMovieDetail | null>(null);
+  const [selectedMovie, setSelectedMovie] = useState<TMDBMovieDetailWithSeasons | null>(null);
   const [detailLoading, setDetailLoading] = useState(false);
 
   // Form state — watchedOn khởi tạo rỗng, set trong useEffect để tránh hydration mismatch
@@ -144,36 +149,74 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
   const isTV = (selectedMovie as any)?.media_type === "tv";
   const numSeasons = selectedMovie?.number_of_seasons ?? 0;
 
-  // Pre-fill form when editEntry is provided
+  // Pre-fill form when editEntry or initialMedia is provided
   useEffect(() => {
     if (open) {
       if (editEntry) {
-        // Tải customizations cho edit entry để lấy poster và tên season tùy chỉnh
-        async function loadCustomizationForEdit() {
+        // Tải customizations và chi tiết phim cho edit entry
+        async function loadEditDetails() {
+          setDetailLoading(true);
           try {
+            const type = editEntry.media_type === "tv" ? "tv" : "movie";
+            const detail = await fetchMovieDetails(editEntry.tmdb_id, type);
+            const detailWithSeasons = detail as TMDBMovieDetailWithSeasons;
+
             const { getMediaCustomization } = await import("@/lib/supabase");
             const customization = await getMediaCustomization(editEntry.tmdb_id, editEntry.media_type);
+
+            let finalSeasons = detailWithSeasons.seasons || [];
+
             if (customization) {
               setCustomSeasonNames(customization.custom_season_names || {});
               setCustomPosterPath(customization.custom_poster_path || null);
+
+              if (type === "tv" && customization.season_group_id) {
+                const { fetchTVEpisodeGroupDetails } = await import("@/lib/tmdb");
+                try {
+                  const groupDetails = await fetchTVEpisodeGroupDetails(customization.season_group_id);
+                  if (groupDetails && groupDetails.groups) {
+                    finalSeasons = groupDetails.groups.map((g: any) => ({
+                      id: g.id ? parseInt(String(g.id).replace(/\D/g, '')) || Math.floor(Math.random() * 100000) : Math.floor(Math.random() * 100000),
+                      name: g.name,
+                      overview: g.overview || "",
+                      season_number: g.order || 1,
+                      air_date: g.episodes?.[0]?.air_date || null,
+                      poster_path: g.poster_path || null,
+                      episode_count: g.episodes?.length || 0,
+                    }));
+                  }
+                } catch (err) {
+                  console.error("Error fetching custom season group in edit mode:", err);
+                }
+              }
+            } else {
+              setCustomSeasonNames({});
+              setCustomPosterPath(null);
             }
+
+            setSelectedMovie({
+              ...detailWithSeasons,
+              media_type: editEntry.media_type,
+              seasons: finalSeasons,
+              poster_path: customization?.custom_poster_path || detailWithSeasons.poster_path
+            });
           } catch (err) {
-            console.error("Failed to load customization for edit:", err);
+            console.error("Failed to load details for edit:", err);
+            // Fallback
+            setSelectedMovie({
+              id: editEntry.tmdb_id,
+              title: editEntry.title.split(" — Season")[0],
+              release_date: editEntry.year ? `${editEntry.year}-01-01` : "",
+              poster_path: editEntry.poster_path,
+              media_type: editEntry.media_type,
+              credits: { cast: [], crew: [] }
+            } as any);
+          } finally {
+            setDetailLoading(false);
           }
         }
-        loadCustomizationForEdit();
+        loadEditDetails();
 
-        setSelectedMovie({
-          id: editEntry.tmdb_id,
-          title: editEntry.title.split(" — Season")[0], // Lấy title gốc không suffix
-          release_date: editEntry.year ? `${editEntry.year}-01-01` : "",
-          poster_path: editEntry.poster_path,
-          media_type: editEntry.media_type,
-          credits: {
-            cast: [],
-            crew: [{ id: 0, name: editEntry.director, job: "Director", department: "Directing", profile_path: null }]
-          }
-        } as any);
         setWatchedOn(editEntry.watched_on);
         setWatchedBefore(editEntry.watched_before);
         setReview(editEntry.review);
@@ -182,11 +225,75 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
         setLiked(editEntry.liked);
         setSelectedSeason(editEntry.season_number ?? null);
         setStep(2);
+      } else if (initialMedia) {
+        // Tải chi tiết cho initialMedia
+        async function loadInitialMedia() {
+          setDetailLoading(true);
+          try {
+            const type = initialMedia.media_type === "tv" ? "tv" : "movie";
+            const detail = await fetchMovieDetails(initialMedia.id, type);
+            const detailWithSeasons = detail as TMDBMovieDetailWithSeasons;
+
+            const { getMediaCustomization } = await import("@/lib/supabase");
+            const customization = await getMediaCustomization(initialMedia.id, type);
+
+            let finalSeasons = detailWithSeasons.seasons || [];
+
+            if (customization) {
+              setCustomSeasonNames(customization.custom_season_names || {});
+              setCustomPosterPath(customization.custom_poster_path || null);
+
+              if (type === "tv" && customization.season_group_id) {
+                const { fetchTVEpisodeGroupDetails } = await import("@/lib/tmdb");
+                try {
+                  const groupDetails = await fetchTVEpisodeGroupDetails(customization.season_group_id);
+                  if (groupDetails && groupDetails.groups) {
+                    finalSeasons = groupDetails.groups.map((g: any) => ({
+                      id: g.id ? parseInt(String(g.id).replace(/\D/g, '')) || Math.floor(Math.random() * 100000) : Math.floor(Math.random() * 100000),
+                      name: g.name,
+                      overview: g.overview || "",
+                      season_number: g.order || 1,
+                      air_date: g.episodes?.[0]?.air_date || null,
+                      poster_path: g.poster_path || null,
+                      episode_count: g.episodes?.length || 0,
+                    }));
+                  }
+                } catch (err) {
+                  console.error("Error fetching custom season group for initialMedia:", err);
+                }
+              }
+            } else {
+              setCustomSeasonNames({});
+              setCustomPosterPath(null);
+            }
+
+            setSelectedMovie({
+              ...detailWithSeasons,
+              media_type: type,
+              seasons: finalSeasons,
+              poster_path: customization?.custom_poster_path || detailWithSeasons.poster_path
+            });
+            setStep(2);
+          } catch (err) {
+            console.error("Failed to load initial media detail:", err);
+            setSelectedMovie({
+              id: initialMedia.id,
+              title: initialMedia.title,
+              release_date: initialMedia.release_date || "",
+              poster_path: initialMedia.poster_path,
+              media_type: initialMedia.media_type,
+            } as any);
+            setStep(2);
+          } finally {
+            setDetailLoading(false);
+          }
+        }
+        loadInitialMedia();
       } else {
         resetForm();
       }
     }
-  }, [open, editEntry]);
+  }, [open, editEntry, initialMedia]);
 
   // Tự động gán selectedSeason mặc định là 1 khi chọn TV series nhiều season ở Step 2
   useEffect(() => {
@@ -214,15 +321,12 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
           setRating(data.rating ?? 0);
           setLiked(data.liked ?? false);
           setReview(data.review ?? "");
-          setTags(data.tags ? data.tags.join(", ") : "");
-          setWatchedBefore(true);
+          setWatchedOn(data.watched_on ?? watchedOn);
         } else {
           // Reset form về trống để thêm mới season đó
           setRating(0);
           setLiked(false);
           setReview("");
-          setTags("");
-          setWatchedBefore(false);
         }
       }
       loadSeasonData();
@@ -258,12 +362,13 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
     try {
       const type = item.media_type === "tv" ? "tv" : "movie";
       const detail = await fetchMovieDetails(item.id, type);
+      const detailWithSeasons = detail as TMDBMovieDetailWithSeasons;
 
       // Load customization from database
       const { getMediaCustomization } = await import("@/lib/supabase");
       const customization = await getMediaCustomization(item.id, type);
 
-      let finalSeasons = detail.seasons || [];
+      let finalSeasons = detailWithSeasons.seasons || [];
 
       if (customization) {
         setCustomSeasonNames(customization.custom_season_names || {});
@@ -295,10 +400,10 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
       }
 
       setSelectedMovie({
-        ...detail,
+        ...detailWithSeasons,
         media_type: item.media_type,
         seasons: finalSeasons,
-        poster_path: customization?.custom_poster_path || detail.poster_path
+        poster_path: customization?.custom_poster_path || detailWithSeasons.poster_path
       });
       setStep(2);
     } catch (err) {
@@ -356,9 +461,9 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
       poster_path: customPosterPath || selectedMovie.poster_path,
       director: getDirector(selectedMovie),
       watched_on: watchedOn,
-      watched_before: watchedBefore,
+      watched_before: false,
       review,
-      tags: tags.split(",").map((t) => t.trim()).filter(Boolean),
+      tags: [] as string[],
       rating,
       liked,
       season_number: (isTV && numSeasons > 1) ? selectedSeason : null,
@@ -416,29 +521,32 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
     <Dialog open={open} onOpenChange={handleClose}>
       {/* sm:!max-w-[800px] ghi đè sm:max-w-lg trong DialogContent base class */}
       <DialogContent
-        className="sm:!max-w-[800px] gap-0 overflow-hidden border-none bg-[#456] p-0 sm:rounded-lg"
+        className="sm:!max-w-[800px] gap-0 overflow-hidden border border-border/30 bg-[#14181c] p-0 sm:rounded-lg shadow-2xl"
         showCloseButton={false}
         onPointerDownOutside={(e) => e.preventDefault()}
         onEscapeKeyDown={(e) => e.preventDefault()}
       >
 
         {/* ── Header ── */}
-        <div className="flex items-center justify-between border-b border-[#567] px-5 py-4">
+        <div className="flex items-center justify-between border-b border-border/40 px-5 py-4 bg-[#182027]/40">
           <div className="flex items-center gap-3">
             {step === 2 && !editEntry && (
               <button
                 onClick={() => { setStep(1); setSelectedMovie(null); }}
-                className="flex items-center gap-1 rounded bg-[#00c030] px-3 py-1.5 text-sm font-semibold text-white hover:bg-[#00e054] transition-colors"
+                className="flex items-center gap-1 rounded bg-[#00c030] px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#00e054] active:scale-95 transition-all"
               >
                 <ChevronLeft className="h-4 w-4" />
                 BACK
               </button>
             )}
-            <DialogTitle className="text-lg font-semibold text-white">
-              {editEntry ? "Edit diary entry..." : step === 1 ? "Add to diary..." : "I've watched..."}
+            <DialogTitle className="text-base font-extrabold uppercase tracking-widest text-white">
+              {editEntry ? "Edit diary entry" : step === 1 ? "Add to diary" : "Log movie"}
             </DialogTitle>
           </div>
-          <button onClick={handleClose} className="text-[#9ab] hover:text-white transition-colors">
+          <DialogDescription className="sr-only">
+            Search for a movie or TV series, then set the season, watched date, rating, and review.
+          </DialogDescription>
+          <button onClick={handleClose} className="text-[#678] hover:text-white transition-colors">
             <X className="h-5 w-5" />
           </button>
         </div>
@@ -454,29 +562,29 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
                   placeholder="Search movies or TV series..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="h-12 w-full border-none bg-white text-[#456] placeholder:text-[#9ab] focus-visible:ring-2 focus-visible:ring-[#00e054]"
+                  className="h-12 w-full border border-border/40 bg-[#1c2228] text-white placeholder:text-[#678] focus-visible:ring-2 focus-visible:ring-[#00e054]"
                   autoFocus
                 />
                 {(searchLoading || detailLoading) && (
-                  <Loader2 className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 animate-spin text-[#456]" />
+                  <Loader2 className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 animate-spin text-[#00e054]" />
                 )}
               </div>
 
-              <p className="mt-2 text-xs text-[#9ab]">
+              <p className="mt-2 text-xs text-[#678]">
                 Supports Vietnamese, English, Chinese, Japanese, Korean and other languages
               </p>
 
               {/* Results */}
               {searchResults.length > 0 && (
-                <div className="mt-4 max-h-[340px] w-full max-w-2xl overflow-y-auto rounded bg-[#2c3440]">
+                <div className="mt-4 max-h-[340px] w-full max-w-2xl overflow-y-auto rounded bg-[#1c2228] border border-border/40 divide-y divide-border/20">
                   {searchResults.map((item) => (
                     <button
                       key={`${item.media_type}-${item.id}`}
                       onClick={() => handleSelectMovie(item)}
-                      className="flex w-full items-center gap-3 px-4 py-3 text-left hover:bg-[#384450] transition-colors"
+                      className="flex w-full items-center gap-3 px-4 py-3 text-left hover:bg-[#2c3440]/30 transition-colors"
                     >
                       {/* Poster nhỏ */}
-                      <div className="relative h-16 w-11 flex-shrink-0 overflow-hidden rounded">
+                      <div className="relative h-16 w-11 flex-shrink-0 overflow-hidden rounded border border-border/30">
                         <Image
                           src={getPosterUrl(item.poster_path, "w185")}
                           alt={item.title}
@@ -489,14 +597,14 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
                       {/* Info */}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <p className="font-medium text-white truncate">{item.title}</p>
+                          <p className="font-extrabold text-white truncate text-sm">{item.title}</p>
                           {/* Badge: TV Series hoặc Movie */}
                           {item.media_type === "tv" ? (
-                            <span className="flex-shrink-0 flex items-center gap-1 rounded bg-[#40bcf4]/20 px-1.5 py-0.5 text-xs text-[#40bcf4]">
-                              <Tv className="h-3 w-3" /> TV Series
+                            <span className="flex-shrink-0 flex items-center gap-1 rounded bg-[#40bcf4]/20 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-[#40bcf4]">
+                              <Tv className="h-3 w-3" /> TV
                             </span>
                           ) : (
-                            <span className="flex-shrink-0 flex items-center gap-1 rounded bg-[#00e054]/10 px-1.5 py-0.5 text-xs text-[#00e054]">
+                            <span className="flex-shrink-0 flex items-center gap-1 rounded bg-[#00e054]/10 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-[#00e054]">
                               <Film className="h-3 w-3" /> Movie
                             </span>
                           )}
@@ -504,13 +612,13 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
 
                         {/* Tên gốc (nếu khác tên tiếng Anh) */}
                         {item.original_title && item.original_title !== item.title && (
-                          <p className="text-xs text-[#7ab] truncate">{item.original_title}</p>
+                          <p className="text-xs text-[#678] truncate">{item.original_title}</p>
                         )}
 
-                        <p className="text-sm text-[#9ab]">
+                        <p className="text-xs text-muted-foreground mt-0.5">
                           {getYear(item.release_date) ?? "N/A"}
                           {item.vote_average > 0 && (
-                            <span className="ml-2 text-[#00e054]">★ {item.vote_average.toFixed(1)}</span>
+                            <span className="ml-2 text-[#00e054] font-semibold">★ {item.vote_average.toFixed(1)}</span>
                           )}
                         </p>
                       </div>
@@ -520,7 +628,7 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
               )}
 
               {searchQuery.trim() && !searchLoading && searchResults.length === 0 && (
-                <p className="mt-6 text-sm text-[#9ab]">
+                <p className="mt-6 text-sm text-[#678]">
                   No results found for &quot;{searchQuery}&quot;
                 </p>
               )}
@@ -529,91 +637,81 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
             /* ── Step 2: Log Entry ── */
             <div className="flex gap-6">
               {/* Poster */}
-              <div className="relative h-[280px] w-[185px] flex-shrink-0 overflow-hidden rounded shadow-lg">
+              <div className="relative h-[300px] w-[200px] flex-shrink-0 overflow-hidden rounded shadow-2xl border border-border/20">
                 {selectedMovie && (
                   <Image
                     src={getPosterUrl(selectedMovie.poster_path, "w342")}
                     alt={selectedMovie.title}
                     fill
-                    sizes="185px"
+                    sizes="200px"
                     className="object-cover"
                   />
                 )}
               </div>
 
               {/* Form */}
-              <div className="flex-1 space-y-4 min-w-0">
+              <div className="flex-1 space-y-5 min-w-0">
                 {/* Title + Type Badge */}
                 <div>
-                  <div className="flex flex-wrap items-center gap-2">
-                    <h2 className="text-2xl font-semibold text-white">
+                  <div className="flex flex-wrap items-baseline gap-2.5">
+                    <h2 className="text-2xl font-black text-white leading-tight tracking-tight">
                       {selectedMovie?.title}
-                      {year && <span className="ml-2 text-xl font-normal text-[#9ab]">{year}</span>}
                     </h2>
+                    {year && <span className="text-lg font-bold text-[#9ab]">{year}</span>}
+                  </div>
+                  <div className="flex items-center gap-2 mt-1.5">
                     {isTV ? (
-                      <span className="flex items-center gap-1 rounded bg-[#40bcf4]/20 px-2 py-0.5 text-xs font-medium text-[#40bcf4]">
+                      <span className="flex items-center gap-1 rounded bg-[#40bcf4]/20 px-2 py-0.5 text-[10px] font-bold text-[#40bcf4] uppercase tracking-wider">
                         <Tv className="h-3 w-3" /> TV Series
                       </span>
                     ) : (
-                      <span className="flex items-center gap-1 rounded bg-[#00e054]/10 px-2 py-0.5 text-xs font-medium text-[#00e054]">
+                      <span className="flex items-center gap-1 rounded bg-[#00e054]/10 px-2 py-0.5 text-[10px] font-bold text-[#00e054] uppercase tracking-wider">
                         <Film className="h-3 w-3" /> Movie
                       </span>
                     )}
+                    {director && director !== "Unknown" && (
+                      <span className="text-xs text-muted-foreground">
+                        {isTV ? "Created by" : "Directed by"}{" "}
+                        <span className="text-white font-medium">{director}</span>
+                      </span>
+                    )}
                   </div>
-                  {director && director !== "Unknown" && (
-                    <p className="mt-0.5 text-sm text-[#9ab]">
-                      {isTV ? "Created by" : "Director"}:{" "}
-                      <span className="text-white">{director}</span>
-                    </p>
-                  )}
                 </div>
 
-                {/* Dropdown Season Selection (Chỉ TV series nhiều season) */}
-                {isTV && numSeasons > 1 && (
-                  <div className="flex items-center gap-3 bg-[#567]/50 rounded-md px-3 py-2 border border-[#678]/40 w-fit">
-                    <span className="text-xs font-semibold text-white uppercase tracking-wider">Select Season</span>
-                    <select
-                      value={selectedSeason ?? 1}
-                      onChange={(e) => setSelectedSeason(Number(e.target.value))}
-                      className="bg-[#2c3440] text-xs text-[#9ab] border border-[#678]/30 rounded px-2.5 py-1 focus:outline-none focus:border-[#00e054] transition-colors cursor-pointer"
-                      disabled={!!editEntry}
-                    >
-                      {Array.from({ length: numSeasons }, (_, i) => i + 1).map((s) => {
-                        const customName = customSeasonNames[String(s)];
-                        const TMDBName = selectedMovie.seasons?.find((x: any) => x.season_number === s)?.name;
-                        const label = customName || TMDBName || `Season ${s}`;
-                        return (
-                          <option key={s} value={s}>
-                            {label}
-                          </option>
-                        );
-                      })}
-                    </select>
-                    {editEntry && <span className="text-[10px] text-muted-foreground italic select-none">(Fixed)</span>}
-                  </div>
-                )}
-
-                {/* Watched On & Before */}
-                <div className="flex flex-wrap items-center gap-4">
-                  <label className="flex items-center gap-2">
-                    <Checkbox
-                      checked={true}
-                      className="h-5 w-5 border-[#678] data-[state=checked]:bg-[#00e054] data-[state=checked]:border-[#00e054]"
-                    />
-                    <span className="text-sm text-[#9ab]">Watched on</span>
+                {/* Season selection & Date picker Row */}
+                <div className="flex flex-wrap items-center gap-3.5">
+                  
+                  {/* Watched On */}
+                  <div className="flex items-center gap-2.5 bg-[#2c3440]/30 rounded-md px-3.5 py-1.5 border border-border/30">
+                    <span className="text-xs font-semibold text-[#9ab] uppercase tracking-wider">Watched on</span>
                     <DatePicker
                       value={watchedOn}
                       onChange={(dateStr) => setWatchedOn(dateStr)}
                     />
-                  </label>
-                  <label className="flex items-center gap-2">
-                    <Checkbox
-                      checked={watchedBefore}
-                      onCheckedChange={(c) => setWatchedBefore(c === true)}
-                      className="h-5 w-5 border-[#678] data-[state=checked]:bg-[#00e054] data-[state=checked]:border-[#00e054]"
-                    />
-                    <span className="text-sm text-[#9ab]">Watched before</span>
-                  </label>
+                  </div>
+                  
+                  {/* Dropdown Season Selection (Chỉ TV series nhiều season) */}
+                  {isTV && numSeasons > 1 && (
+                    <div className="flex items-center gap-2.5 bg-[#2c3440]/30 rounded-md px-3.5 py-1.5 border border-border/30">
+                      <span className="text-xs font-semibold text-[#9ab] uppercase tracking-wider">Season</span>
+                      <select
+                        value={selectedSeason ?? 1}
+                        onChange={(e) => setSelectedSeason(Number(e.target.value))}
+                        className="bg-[#1c2228] text-xs font-bold text-white border border-border/30 rounded px-2.5 py-1 focus:outline-none focus:border-[#00e054] transition-colors cursor-pointer"
+                      >
+                        {Array.from({ length: numSeasons }, (_, i) => i + 1).map((s) => {
+                          const customName = customSeasonNames[String(s)];
+                          const TMDBName = selectedMovie.seasons?.find((x: any) => x.season_number === s)?.name;
+                          const label = customName || TMDBName || `Season ${s}`;
+                          return (
+                            <option key={s} value={s}>
+                              {label}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </div>
+                  )}  
                 </div>
 
                 {/* Review */}
@@ -621,38 +719,39 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
                   placeholder="Write your review..."
                   value={review}
                   onChange={(e) => setReview(e.target.value)}
-                  className="h-24 w-full resize-none rounded border-none bg-[#567] px-3 py-2 text-sm text-white placeholder:text-[#9ab] focus:outline-none focus:ring-2 focus:ring-[#00e054]"
+                  className="h-28 w-full resize-none rounded-md border border-border/30 bg-[#1c2228] px-4 py-3 text-sm text-white placeholder:text-muted-foreground/50 focus:outline-none focus:border-[#00e054] focus:ring-1 focus:ring-[#00e054]/30 transition-all duration-200"
                 />
 
-                {/* Tags + Rating + Like */}
-                <div className="flex flex-wrap items-end gap-6">
-                  {/* Tags */}
-                  <div className="flex-1 min-w-[140px]">
-                    <p className="mb-1 text-sm font-medium text-white">Tags</p>
-                    <Input
-                      placeholder="e.g., netflix, action"
-                      value={tags}
-                      onChange={(e) => setTags(e.target.value)}
-                      className="h-10 border-none bg-[#567] text-white placeholder:text-[#9ab]"
-                    />
+                {/* Rating + Like Box */}
+                <div className="flex items-center gap-6 bg-[#2c3440]/35 rounded-lg px-5 py-3.5 border border-border/30 max-w-sm">
+                  {/* Rating */}
+                  <div className="flex flex-col gap-1.5 flex-1">
+                    <span className="text-[10px] font-bold text-[#9ab] uppercase tracking-wider">Rating</span>
+                    <div className="flex items-center h-8">
+                      <StarRating rating={rating} onRatingChange={setRating} />
+                    </div>
                   </div>
 
-                  {/* Rating — half-star */}
-                  <div>
-                    <p className="mb-1 text-sm font-medium text-white">Rating</p>
-                    <StarRating rating={rating} onRatingChange={setRating} />
-                  </div>
+                  {/* Vertical Divider */}
+                  <div className="w-[1px] h-9 bg-border/40" />
 
                   {/* Like */}
-                  <div>
-                    <p className="mb-1 text-sm font-medium text-white">Like</p>
-                    <button type="button" onClick={() => setLiked(!liked)} className="p-0.5">
-                      <Heart
-                        className={`h-7 w-7 transition-colors ${
-                          liked ? "fill-[#ff8000] text-[#ff8000]" : "fill-transparent text-[#678]"
-                        }`}
-                      />
-                    </button>
+                  <div className="flex flex-col gap-1.5">
+                    <span className="text-[10px] font-bold text-[#9ab] uppercase tracking-wider text-center">Like</span>
+                    <div className="flex items-center justify-center h-8 w-12">
+                      <button 
+                        type="button" 
+                        onClick={() => setLiked(!liked)} 
+                        className="p-1.5 rounded-full hover:bg-white/10 active:scale-95 transition-all text-[#678] hover:text-[#ff8000]"
+                        title="Like this film"
+                      >
+                        <Heart
+                          className={`h-6 w-6 transition-colors ${
+                            liked ? "fill-[#ff8000] text-[#ff8000]" : "fill-transparent currentColor"
+                          }`}
+                        />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -662,13 +761,13 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
 
         {/* ── Footer: Save & Delete buttons ── */}
         {step === 2 && (
-          <div className="flex justify-between items-center border-t border-[#567] px-5 py-4 w-full">
+          <div className="flex justify-between items-center border-t border-border/40 px-5 py-4 w-full bg-[#182027]/40">
             <div>
               {editEntry && (
                 <button
                   onClick={handleDelete}
                   disabled={deleting || saving}
-                  className="flex items-center gap-2 rounded bg-[#ff3333] hover:bg-[#ff4d4d] px-5 py-2 font-semibold text-white disabled:opacity-60 active:scale-95 transition-all text-sm"
+                  className="flex items-center gap-2 rounded bg-red-600 hover:bg-red-500 px-5 py-2.5 font-bold uppercase tracking-wider text-white disabled:opacity-60 active:scale-95 transition-all text-xs shadow-lg shadow-red-600/10"
                 >
                   {deleting && <Loader2 className="h-4 w-4 animate-spin" />}
                   Delete Log
@@ -679,7 +778,7 @@ export function LogModal({ open, onOpenChange, onSaved, editEntry }: LogModalPro
               <button
                 onClick={handleSave}
                 disabled={saving || deleting}
-                className="flex items-center gap-2 rounded bg-[#00c030] px-6 py-2 font-semibold text-white hover:bg-[#00e054] disabled:opacity-60 active:scale-95 transition-all"
+                className="flex items-center gap-2 rounded bg-[#00c030] px-6 py-2.5 font-bold uppercase tracking-wider text-white hover:bg-[#00e054] disabled:opacity-60 active:scale-95 transition-all text-xs"
               >
                 {saving && <Loader2 className="h-4 w-4 animate-spin" />}
                 {saving ? "Saving..." : "Save entry"}

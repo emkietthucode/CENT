@@ -182,7 +182,7 @@ export async function fetchLatestByCountry(country: "vietnam" | "usa" | "korea" 
 
   if (country === "vietnam") {
     params["with_original_language"] = "vi";
-    params["vote_count.gte"] = "1";
+    params["vote_count.gte"] = "0";
   } else if (country === "usa") {
     params["with_original_language"] = "en";
     params["with_origin_country"] = "US";

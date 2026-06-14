@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 import { MovieGrid, MovieCard } from "@/components/movie-grid";
 import { LogModal } from "@/components/log-modal";
 import {
@@ -592,33 +593,7 @@ export function TVSeriesClient({
         }}
       />
 
-      {/* Footer */}
-      <footer className="border-t border-border bg-[#0d1114] py-8 mt-12">
-        <div className="mx-auto max-w-[1200px] px-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="flex items-center gap-1">
-                <span className="h-3 w-3 rounded-full bg-[#ff8000]" />
-                <span className="h-3 w-3 rounded-full bg-[#00e054]" />
-                <span className="h-3 w-3 rounded-full bg-[#40bcf4]" />
-              </div>
-              <span className="text-sm font-bold text-white tracking-tight">CEnt</span>
-            </div>
-            <p className="text-xs text-muted-foreground">
-              Movie data from{" "}
-              <a
-                href="https://www.themoviedb.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition-colors"
-              >
-                TMDB
-              </a>{" "}
-              · Ratings integrated from OMDb API & IMDb Python
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

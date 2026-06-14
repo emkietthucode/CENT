@@ -459,7 +459,32 @@ export function DiarySection({ entries, onDelete, onEdit, onRefresh }: DiarySect
   const [diaryYearFilter, setDiaryYearFilter] = useState<string>("all");
   const [decadeFilter, setDecadeFilter] = useState<string>("all");
   const [genreFilter, setGenreFilter] = useState<string>("all");
+  const [typeFilter, setTypeFilter] = useState<string>("all");
   const [sortOrder, setSortOrder] = useState<"desc" | "asc">("desc");
+
+  // Infinite Scroll state
+  const [visibleCount, setVisibleCount] = useState<number>(20);
+  const [loadMoreTrigger, setLoadMoreTrigger] = useState<HTMLDivElement | null>(null);
+
+  // Reset visibleCount when filters change
+  useEffect(() => {
+    setVisibleCount(20);
+  }, [ratingFilter, diaryYearFilter, decadeFilter, genreFilter, typeFilter, sortOrder]);
+
+  // Load more on intersection
+  useEffect(() => {
+    if (!loadMoreTrigger) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setVisibleCount((prev) => prev + 20);
+        }
+      },
+      { threshold: 0.1, rootMargin: "200px" }
+    );
+    observer.observe(loadMoreTrigger);
+    return () => observer.disconnect();
+  }, [loadMoreTrigger]);
 
   // Import/Export and Custom Delete Dialog states
   const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
@@ -602,6 +627,10 @@ export function DiarySection({ entries, onDelete, onEdit, onRefresh }: DiarySect
       result = result.filter((e) => e.genres && e.genres.includes(genreFilter));
     }
 
+    if (typeFilter !== "all") {
+      result = result.filter((e) => e.media_type === typeFilter);
+    }
+
     // Sort by watched date
     result.sort((a, b) => {
       const dateA = new Date(normalizeWatchedOn(a.watched_on)).getTime();
@@ -610,7 +639,7 @@ export function DiarySection({ entries, onDelete, onEdit, onRefresh }: DiarySect
     });
 
     return result;
-  }, [entriesWithOmdb, ratingFilter, diaryYearFilter, decadeFilter, genreFilter, sortOrder]);
+  }, [entriesWithOmdb, ratingFilter, diaryYearFilter, decadeFilter, genreFilter, typeFilter, sortOrder]);
 
   const handleDeleteClick = (id: string, e: React.MouseEvent) => {
     e.preventDefault();
@@ -651,6 +680,20 @@ export function DiarySection({ entries, onDelete, onEdit, onRefresh }: DiarySect
 
         {/* Right: filter buttons */}
         <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+          {/* Type */}
+          <div className="relative">
+            <select
+              value={typeFilter}
+              onChange={(e) => setTypeFilter(e.target.value)}
+              className="appearance-none bg-[#1c2228] border border-border/40 hover:border-border rounded-md px-3 py-1.5 pr-8 text-[10px] sm:text-[11px] font-bold text-muted-foreground hover:text-white uppercase tracking-widest cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#00e054]/40 transition-all select-none"
+            >
+              <option value="all">TYPE</option>
+              <option value="movie">MOVIE</option>
+              <option value="tv">TV SERIES</option>
+            </select>
+            <ChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground pointer-events-none" />
+          </div>
+
           {/* Rating */}
           <div className="relative">
             <select
@@ -738,7 +781,7 @@ export function DiarySection({ entries, onDelete, onEdit, onRefresh }: DiarySect
             </tr>
           </thead>
           <tbody className="divide-y divide-border/30">
-            {filteredEntries.map((entry) => {
+            {filteredEntries.slice(0, visibleCount).map((entry) => {
               // Parse date parts (normalize ISO format)
               const parts = normalizeWatchedOn(entry.watched_on).split(" ");
               const day = parts[0] || "";
@@ -881,6 +924,17 @@ export function DiarySection({ entries, onDelete, onEdit, onRefresh }: DiarySect
           </tbody>
         </table>
       </div>
+
+      {/* Infinite Scroll Trigger */}
+      {visibleCount < filteredEntries.length && (
+        <div
+          ref={setLoadMoreTrigger}
+          className="flex justify-center items-center py-6 w-full select-none"
+        >
+          <Loader2 className="h-5 w-5 animate-spin text-[#00e054] mr-2" />
+          <span className="text-xs text-muted-foreground font-semibold uppercase tracking-wider">Loading more entries...</span>
+        </div>
+      )}
       
       {filteredEntries.length === 0 && (
         <div className="text-center py-12 border border-dashed border-border/40 rounded-lg">

@@ -7,6 +7,7 @@ import { Star, Tv, Film, Trash2, Loader2 } from "lucide-react";
 import { Header } from "@/components/header";
 import { LogModal } from "@/components/log-modal";
 import { getWatchlist, removeFromWatchlist, type WatchlistItem } from "@/lib/supabase";
+import { Footer } from "@/components/footer";
 import { getPosterUrl, getYear } from "@/lib/tmdb";
 import { getOmdbData, parseOMDBRatings } from "@/lib/omdb";
 
@@ -203,6 +204,7 @@ export default function WatchlistPage() {
         onOpenChange={setLogModalOpen}
         onSaved={loadWatchlist}
       />
+      <Footer />
     </div>
   );
 }

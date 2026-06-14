@@ -70,6 +70,16 @@ export interface TMDBAlternativeTitle {
   type: string;
 }
 
+export interface TMDBSeason {
+  id: number;
+  name: string;
+  overview: string;
+  season_number: number;
+  air_date: string | null;
+  poster_path: string | null;
+  episode_count: number;
+}
+
 export interface TMDBMovieDetail extends TMDBMovie {
   genres: TMDBGenre[];
   runtime: number;
@@ -85,6 +95,7 @@ export interface TMDBMovieDetail extends TMDBMovie {
   number_of_episodes?: number;
   created_by?: TMDBCreatedBy[];
   networks?: { id: number; name: string; logo_path: string | null }[];
+  seasons?: TMDBSeason[];
 }
 
 export interface TMDBSearchResult {

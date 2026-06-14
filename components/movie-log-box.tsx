@@ -251,16 +251,29 @@ export function MovieLogBox({
   async function handleWatchlistToggle() {
     const next = !watchlist;
     setWatchlist(next);
-    if (next) {
-      await addToWatchlist({
-        tmdb_id: tmdbId,
-        media_type: mediaType,
-        title,
-        year,
-        poster_path: posterPath,
-      });
-    } else {
-      await removeFromWatchlist(tmdbId, mediaType);
+    try {
+      if (next) {
+        const result = await addToWatchlist({
+          tmdb_id: tmdbId,
+          media_type: mediaType,
+          title,
+          year,
+          poster_path: posterPath,
+        });
+        if (!result) {
+          console.error("[Watchlist] addToWatchlist returned null – reverting UI");
+          setWatchlist(false);
+        }
+      } else {
+        const success = await removeFromWatchlist(tmdbId, mediaType);
+        if (!success) {
+          console.error("[Watchlist] removeFromWatchlist failed – reverting UI");
+          setWatchlist(true);
+        }
+      }
+    } catch (err) {
+      console.error("[Watchlist] toggle error:", err);
+      setWatchlist(!next); // Revert
     }
   }
 

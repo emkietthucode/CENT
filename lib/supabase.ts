@@ -135,7 +135,7 @@ export async function getWatchlist(): Promise<WatchlistItem[]> {
 export async function addToWatchlist(item: Omit<WatchlistItem, 'id' | 'user_id' | 'created_at'>): Promise<WatchlistItem | null> {
   const { data, error } = await supabase
     .from("watchlist")
-    .insert([{ ...item, user_id: STATIC_USER_ID }])
+    .upsert([{ ...item, user_id: STATIC_USER_ID }], { onConflict: "user_id,tmdb_id,media_type" })
     .select()
     .single();
 
